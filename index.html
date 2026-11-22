@@ -476,15 +476,20 @@ html { overflow-x: clip; }
 .tb__panel { padding-top: 20px; }
 .tb__panel .kv { margin-top: 0; }
 .tp__hero { display: flex; gap: 18px; height: min(calc((100vw - 90px) / 3.34), 78vh); margin: 28px 24px 0; justify-content: center; }
-.tp__hero .kv { flex: none; height: 100%; aspect-ratio: 1920 / 925; max-height: none; width: auto; margin: 0; border-radius: 6px; }
+.tp__hero .kv { flex: none; height: 100%; aspect-ratio: var(--ar, 1920 / 925); max-height: none; width: auto; margin: 0; border-radius: 6px; }
 .tp__hero .kv:not(.tall) .kv__img { inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .tp__col { flex: none; height: 100%; display: flex; flex-direction: column; }
-.tp__ph { height: calc(100% - 28px); width: auto; aspect-ratio: 600 / 1000; max-width: none; border-radius: 30px; padding: 7px; margin: 0; }
+.tp__ph { height: calc(100% - 28px); width: auto; aspect-ratio: var(--sar, 600 / 1000); max-width: none; border-radius: 30px; padding: 7px; margin: 0; }
 .tp__ph::before { display: none; }
 .tp__ph .phone__s { border-radius: 24px; }
 .tp__ph .phone__s > img { object-fit: cover; }
 .tp__ev { height: calc(100% - 28px); overflow: hidden; border-radius: 6px; background: #fff; box-shadow: 0 24px 50px -30px rgba(0,0,0,.4); }
 .tp__ev img { width: 100%; display: block; }
+.tp__subs { display: flex; gap: 16px; margin: 36px 24px 0; align-items: flex-start; }
+.tp__subs figure { margin: 0; flex: 1; } .tp__subs img { width: 100%; display: block; border-radius: 6px; box-shadow: 0 18px 36px -26px rgba(0,0,0,.45); }
+.tp__subs figcaption { margin-top: 8px; font-size: 11px; color: var(--mute); text-transform: uppercase; }
+.igp.sq .igp__media { aspect-ratio: 1; }
+@media (max-width: 800px) { .tp__subs { flex-direction: column; } }
 .tp__ev.scroll img { animation: evScroll 14s cubic-bezier(.45,0,.55,1) 3s infinite alternate; }
 @keyframes evScroll { 0%, 8% { transform: translateY(0); } 92%, 100% { transform: translateY(calc(-100% + var(--evh, 0px))); } }
 .tp__cap { margin-top: 10px; }
@@ -738,6 +743,7 @@ html { overflow-x: clip; }
     pop: ["images/lbf-pop1.jpg", "images/lbf-pop2.jpg", "images/lbf-pop3.jpg"],
     ig: ["images/lbf-ig1.jpg", "images/lbf-ig2.jpg", "images/lbf-ig3.jpg", "images/lbf-ig4.jpg", "images/lbf-ig5.jpg", "images/lbf-ig6.jpg"] };
   var H_LBF = "images/h-lbf.jpg";
+  var AF = { pc: "images/af-pc.jpg", mo: "images/af-mo.jpg", ig: "images/af-ig.jpg", s1: "images/af-sub1.jpg", s2: "images/af-sub2.jpg" };
   var SR = ["images/sr-ig1.jpg", "images/sr-ig2.jpg", "images/sr-ig3.jpg", "images/sr-ig4.jpg", "images/sr-ig5.jpg"];
   /* 캠페인(클라이언트 안의 개별 작업) — 배너·팝업·이벤트페이지·인스타 순서로 보여줌 */
   var K = [
@@ -755,6 +761,14 @@ html { overflow-x: clip; }
       event: { img: LBF.ev, w: 1000, h: 1680 },
       insta: LBF.ig,
       igPost: { account: "laserin_swim", date: "11월 23일", caption: "라세린 2026 최대 세일 💙\nBLACK FRIDAY 할인 레인 입장!\n\n※ 캡션 가안입니다. 실제 게시글 문구로 바꿔 주세요.", tags: "#라세린 #블랙프라이데이 #수영복세일" } },
+    { slug: "atflee-lucky-festa", client: "atflee", brand: "Atflee", name: "Lucky Festa", period: "2025.03.03 — 03.09", tone: "#E6F9DA", flowTone: "#B7EE96", dot: "#5CE62E",
+      head: "앳플리 ‘럭키 페스타’ 프로모션",
+      ov: "앳플리와 입점 브랜드가 함께한 7일간의 ‘럭키 페스타’ 프로모션 디자인 작업을 진행했습니다. 네잎클로버 캐릭터와 밤하늘의 별똥별 모티프로 웹·모바일 배너, 띠배너, 인스타그램 콘텐츠까지 하나의 톤으로 이어지게 작업했습니다.",
+      kv: { img: AF.pc, w: 1920, h: 860 },
+      banner: { pc: AF.pc, mo: AF.mo, mw: 750, mh: 1308 },
+      subs: [{ img: AF.s1, cap: "Product Banner" }, { img: AF.s2, cap: "Line Banner" }],
+      insta: [AF.ig], igSq: true,
+      igPost: { account: "atflee_official", date: "3월 3일", caption: "단 7일간의 행운만땅 특가 🍀\nLUCKY FESTA 최대 80% 할인!\n\n※ 캡션 가안입니다. 실제 게시글 문구로 바꿔 주세요.", tags: "#앳플리 #럭키페스타" } },
     { slug: "secrets-black-friday", client: "gogodive", brand: "Secrets", name: "26 블랙프라이데이 프로모션", period: "2026.11.16 — 12.04", tone: "#F7E1EC", flowTone: "#EBB5CF", dot: "#F04FA8",
       head: "시크릿스 블랙프라이데이 ‘PINK ON’",
       ov: "시크릿스의 블랙프라이데이 프로모션 ‘PINK ON’ 디자인 작업을 진행했습니다. 웹·모바일 배너, 팝업 2종, 이벤트 페이지 2종, 인스타그램 콘텐츠까지 블랙과 핑크 톤으로 이어지게 작업했습니다.",
@@ -813,9 +827,13 @@ html { overflow-x: clip; }
           items: [ { ph: 1, w: 4, h: 5 }, { ph: 1, w: 4, h: 5 }, { ph: 1, w: 1, h: 1 } ] }
       ],
       ov: "고고다이브에서 운영하는 네 개 브랜드(라세린, 시크릿스, 딥바이브, 고고다이브)의 디자인을 모두 맡아 진행하고 있습니다. ※ 가안 문구입니다. 실제 작업 내용으로 바꿔 주세요." },
-    { slug: "atflee", wall: true, name: "Atflee", period: "—", role: "Brand Content Design",
+    { slug: "atflee", tabs: true, name: "Atflee", period: "2025.03 —", role: "Brand Content Design",
       works: [], recipe: 2, pal: ["#6BFF2F", "#0A0A0A", "#7DB93A", "#FFFFFF"], word: "Atflee",
-      ov: "앳플리와 함께 진행한 브랜드 콘텐츠 디자인 작업입니다. ※ 가안 문구입니다. 실제 작업 내용으로 바꿔 주세요." },
+      spec: [["Client", "Atflee"], ["Field", "Contents Design"], ["Deliverables", "Event Banner / SNS Contents"], ["Tools", "Photoshop · Illustrator"]],
+      chapters: [{ name: "Atflee", tone: "#E6F9DA", items: [] }], flowTone: "#B7EE96",
+      flow: [AF.ig, AF.mo, H_LUCKY, AF.mo, AF.ig],
+      phone: [{ img: AF.ig, t: "Lucky Festa", s: "Atflee · 최대 80% 할인" }, { img: AF.mo, t: "Lucky Festa", s: "Atflee · 모바일 배너" }],
+      ov: "앳플리의 시즌 프로모션과 이벤트 콘텐츠 디자인을 진행했습니다. ※ 가안 문구입니다. 실제 작업 내용으로 바꿔 주세요." },
     { slug: "roveton", name: "ROVETON", period: "Subscription Client", status: "Ongoing", role: "Brand Identity / Content Design",
       works: ["roveton-bi-guidebook"], recipe: 3, pal: ["#DF4710", "#0D0D0D", "#BFBFBF", "#FFFFFF"], word: "ROVETON", use: "roveton-bi-guidebook",
       ov: "‘Carry Less, Live More’를 슬로건으로 하는 캐리어 브랜드 ROVETON의 브랜드 디자인을 구독 형태로 함께 진행하고 있습니다. ※ 가안 문구입니다. 실제 작업 내용으로 바꿔 주세요." },
@@ -1013,7 +1031,7 @@ html { overflow-x: clip; }
   function igHTML(k) {
     var g = k.igPost || {}, n = k.insta.length;
     var cap = (g.caption || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/\n/g, "<br>");
-    return '<div class="igp rvt" data-ig><div class="igp__media"><div class="igp__track">' + k.insta.map(function (src, i) { return '<img alt="인스타그램 ' + (i + 1) + '" src="' + src + '">'; }).join("") + "</div>" +
+    return '<div class="igp rvt' + (k.igSq ? " sq" : "") + '" data-ig><div class="igp__media"><div class="igp__track">' + k.insta.map(function (src, i) { return '<img alt="인스타그램 ' + (i + 1) + '" src="' + src + '">'; }).join("") + "</div>" +
       '<button class="igp__nav prev" aria-label="이전">‹</button><button class="igp__nav next" aria-label="다음">›</button><div class="igp__dots">' + k.insta.map(function (x, i) { return "<i" + (i ? "" : ' class="on"') + "></i>"; }).join("") + "</div></div>" +
       '<div class="igp__side"><div class="igp__head"><span class="igp__av">' + (g.account || k.brand).charAt(0).toUpperCase() + '</span><b>' + (g.account || k.brand.toLowerCase()) + '</b><span class="igp__ck"></span><span class="igp__f">· 팔로우</span><span class="igp__more">···</span></div>' +
       '<div class="igp__body"><span class="igp__av">' + (g.account || k.brand).charAt(0).toUpperCase() + '</span><p><b>' + (g.account || k.brand.toLowerCase()) + "</b> " + cap + (g.tags ? '<br><br><span class="igp__tag">' + g.tags + "</span>" : "") + "</p></div>" +
@@ -1110,8 +1128,9 @@ html { overflow-x: clip; }
     var ev = k.event ? [].concat(k.event)[0] : null;
     var h = '<div class="tp__info"><div><b class="tp__n">' + k.name + '</b><span class="tp__p">' + k.brand + " · " + k.period + '</span></div><p>' + k.ov + '</p><div class="cl__tags">' + del.map(function (d) { return "<span>" + d + "</span>"; }).join("") + "</div></div>";
     h += '<div class="tp__hero">' + kvHTML(k) +
-      (k.banner && k.banner.mo ? '<div class="tp__col"><div class="phone tp__ph"><div class="phone__s"><img alt="모바일 배너" src="' + k.banner.mo + '">' + (pop.length ? '<div class="dim"></div><div class="pop"><img alt="팝업" src="' + pop[pop.length - 1] + '"></div>' : "") + '</div></div><span class="tp__cap">Mobile' + (pop.length ? " · Popup" : "") + "</span></div>" : "") +
+      (k.banner && k.banner.mo ? '<div class="tp__col"><div class="phone tp__ph" style="--sar:' + (k.banner.mw || 600) + " / " + (k.banner.mh || 1000) + '"><div class="phone__s"><img alt="모바일 배너" src="' + k.banner.mo + '">' + (pop.length ? '<div class="dim"></div><div class="pop"><img alt="팝업" src="' + pop[pop.length - 1] + '"></div>' : "") + '</div></div><span class="tp__cap">Mobile' + (pop.length ? " · Popup" : "") + "</span></div>" : "") +
       (ev ? '<div class="tp__col"><div class="tp__ev' + (ev.h / ev.w > 2 ? " scroll" : "") + '" style="aspect-ratio:' + (ev.h / ev.w > 2 ? "0.56" : ev.w + " / " + ev.h) + '"><img alt="이벤트 페이지" src="' + ev.img + '"></div><span class="tp__cap">Event Page</span></div>' : "") + "</div>";
+    if (k.subs) h += '<div class="tp__subs">' + k.subs.map(function (x) { return '<figure class="rvt"><img loading="lazy" alt="' + x.cap + '" src="' + x.img + '"><figcaption>' + x.cap + "</figcaption></figure>"; }).join("") + "</div>";
     if (k.insta) h += '<section class="igs">' + igHTML(k) + "</section>";
     return h;
   }
@@ -1224,7 +1243,7 @@ html { overflow-x: clip; }
     $("#viewDetail").innerHTML =
       '<section class="detail-head"><a class="crumb" href="#projects">← Featured Work</a><h1 class="display">' + c.name + "</h1>" +
       (c.flow || c.wall ? "</section>" : '<div class="detail-hero"><img alt="' + c.name + '" src="' + c.cover + '"></div></section>') +
-      (c.chapters ? sumHTML(c.head, c.ov, c.spec.concat([["Role", c.role]])) + (c.slug === "gogodive" ? wallHTML(c.flow, c.flowTone || c.chapters[0].tone, c.phone) + tabsHTML(c) : (c.flow ? wallHTML(c.flow, c.flowTone || c.chapters[0].tone, c.phone || c.flow.map(function (x) { return { img: x, t: c.name, s: "" }; })) : (c.wall ? wallHTML(contOf(c).imgs, c.flowTone || c.chapters[0].tone, contOf(c).ph) : "")) + showcaseHTML(c)) :
+      (c.chapters ? sumHTML(c.head, c.ov, c.spec.concat([["Role", c.role]])) + (c.tabs ? wallHTML(c.flow, c.flowTone || c.chapters[0].tone, c.phone) + tabsHTML(c) : (c.flow ? wallHTML(c.flow, c.flowTone || c.chapters[0].tone, c.phone || c.flow.map(function (x) { return { img: x, t: c.name, s: "" }; })) : (c.wall ? wallHTML(contOf(c).imgs, c.flowTone || c.chapters[0].tone, contOf(c).ph) : "")) + showcaseHTML(c)) :
       '<section class="detail-info"><dl>' + meta.map(function (m) { return "<div><dt>" + m[0] + "</dt><dd>" + m[1] + "</dd></div>"; }).join("") + "</dl>" +
       '<div class="ov"><span>Overview</span><p>' + c.ov + "</p></div></section>" + (c.wall ? wallHTML(contOf(c).imgs, c.flowTone || c.pal[1], contOf(c).ph) : "")) +
       (c.chapters ? "" : '<section class="others cworks"><h2 class="display">Works</h2>' +
@@ -1279,7 +1298,7 @@ html { overflow-x: clip; }
     var W = 0, H = 0, visible = true, sc = 1;
     var SIZES = [132, 138, 194, 174, 132, 147, 174, 160, 150];
     var RATIO = [1.25, 1.415, 1, 1.25, 1, 1.414, 1, 1.25, 1.25];
-    var HERO = { 0: { img: H_LBF, href: "#k-laserin-black-friday", name: "라세린 26 블랙프라이데이" }, 1: { img: H_L7, href: "#p-l7-myeongdong-retro-poster", name: "L7 Myeongdong Retro Posters" }, 3: { img: MM_HERO, href: "#c-millimom", name: "Millimom" }, 5: { img: H_WN, href: "#p-blue-lion-wanini-musical", name: "Blue Lion Wanini Musical" }, 6: { img: H_LUCKY, href: "#c-atflee", name: "Atflee" }, 7: { img: H_LASERIN, href: "#k-laserin-swim-week", name: "Laserin Swim Week" }, 8: { img: H_BF, href: "#k-secrets-black-friday", name: "26 블랙프라이데이 프로모션" } };
+    var HERO = { 0: { img: H_LBF, href: "#k-laserin-black-friday", name: "라세린 26 블랙프라이데이" }, 1: { img: H_L7, href: "#p-l7-myeongdong-retro-poster", name: "L7 Myeongdong Retro Posters" }, 3: { img: MM_HERO, href: "#c-millimom", name: "Millimom" }, 5: { img: H_WN, href: "#p-blue-lion-wanini-musical", name: "Blue Lion Wanini Musical" }, 6: { img: H_LUCKY, href: "#c-atflee", name: "Atflee Lucky Festa" }, 7: { img: H_LASERIN, href: "#k-laserin-swim-week", name: "Laserin Swim Week" }, 8: { img: H_BF, href: "#k-secrets-black-friday", name: "26 블랙프라이데이 프로모션" } };
     var DEPTH = [0.2, 0.85, 0.5, 1.0, 0.35, 0.7, 0.0, 0.6, 0.45];
     var AX = [0.17, 0.13, 0.19, 0.12, 0.16, 0.1, 0.18, 0.14, 0.15];
     var AY = [0.2, 0.16, 0.22, 0.17, 0.23, 0.14, 0.2, 0.21, 0.18];
