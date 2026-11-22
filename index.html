@@ -489,6 +489,14 @@ html { overflow-x: clip; }
 .tp__subs figure { margin: 0; flex: 1; } .tp__subs img { width: 100%; display: block; border-radius: 6px; box-shadow: 0 18px 36px -26px rgba(0,0,0,.45); }
 .tp__subs figcaption { margin-top: 8px; font-size: 11px; color: var(--mute); text-transform: uppercase; }
 .igp.sq .igp__media { aspect-ratio: 1; }
+.dpsw { display: flex; gap: 6px; margin-top: 18px; } .dpsw button { padding: 7px 16px; border-radius: 20px; border: 1px solid rgba(15,15,15,.2); font-size: 13px; } .dpsw button.on { background: #0F0F0F; color: #fff; border-color: #0F0F0F; }
+.pk { padding: 120px 24px 0; }
+.pk__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.pk__grid figure { margin: 0; } .pk__grid figure.big { grid-column: 1 / -1; }
+.pk__grid img { width: 100%; display: block; border-radius: 6px; }
+.pk__grid figure.big img { aspect-ratio: 16 / 8; object-fit: cover; }
+.pk__grid figcaption { display: flex; gap: 10px; margin-top: 10px; font-size: 13px; color: var(--mute); } .pk__grid figcaption b { color: #0F0F0F; font-weight: 600; }
+@media (max-width: 800px) { .pk__grid { grid-template-columns: 1fr; } }
 @media (max-width: 800px) { .tp__subs { flex-direction: column; } }
 .tp__ev.scroll img { animation: evScroll 14s cubic-bezier(.45,0,.55,1) 3s infinite alternate; }
 @keyframes evScroll { 0%, 8% { transform: translateY(0); } 92%, 100% { transform: translateY(calc(-100% + var(--evh, 0px))); } }
@@ -744,6 +752,8 @@ html { overflow-x: clip; }
     ig: ["images/lbf-ig1.jpg", "images/lbf-ig2.jpg", "images/lbf-ig3.jpg", "images/lbf-ig4.jpg", "images/lbf-ig5.jpg", "images/lbf-ig6.jpg"] };
   var H_LBF = "images/h-lbf.jpg";
   var AF = { pc: "images/af-pc.jpg", mo: "images/af-mo.jpg", ig: "images/af-ig.jpg", s1: "images/af-sub1.jpg", s2: "images/af-sub2.jpg" };
+  var WL = { t8: "images/wl-t8.jpg", tx: "images/wl-tx.jpg", thumb: "images/wl-thumb.jpg",
+    pack: [{ img: "images/wl-box.jpg", cap: "Package Box", d: "T8 체중계 패키지 박스" }, { img: "images/wl-manual.jpg", cap: "User Manual", d: "TX 사용설명서 (표지 · 내지)" }, { img: "images/wl-habit.jpg", cap: "Habit Tracker", d: "월리 해빗 트래커 (증정품)" }, { img: "images/wl-card.jpg", cap: "Checkpoint Card", d: "사용 전 필수 체크포인트 카드" }] };
   var SR = ["images/sr-ig1.jpg", "images/sr-ig2.jpg", "images/sr-ig3.jpg", "images/sr-ig4.jpg", "images/sr-ig5.jpg"];
   /* 캠페인(클라이언트 안의 개별 작업) — 배너·팝업·이벤트페이지·인스타 순서로 보여줌 */
   var K = [
@@ -769,6 +779,10 @@ html { overflow-x: clip; }
       subs: [{ img: AF.s1, cap: "Product Banner" }, { img: AF.s2, cap: "Line Banner" }],
       insta: [AF.ig], igSq: true,
       igPost: { account: "atflee_official", date: "3월 3일", caption: "단 7일간의 행운만땅 특가 🍀\nLUCKY FESTA 최대 80% 할인!\n\n※ 캡션 가안입니다. 실제 게시글 문구로 바꿔 주세요.", tags: "#앳플리 #럭키페스타" } },
+    { slug: "atflee-wally-edition", client: "atflee", brand: "Atflee", name: "Wally Edition", period: "2024.12 — 2025.02", tone: "#FBE3E3", flowTone: "#F6B9B9", dot: "#E2231A",
+      head: "앳플리 × 월리를 찾아라 ‘월리 에디션’",
+      ov: "앳플리 T8·TX 디지털 체중계와 ‘월리를 찾아라’ 캐릭터가 만난 월리 에디션의 상세페이지와 패키지를 디자인했습니다. 상세페이지부터 패키지 박스, 사용설명서, 해빗 트래커, 체크포인트 카드까지 제품에 함께 들어가는 구성물 전체를 하나의 톤으로 맞췄습니다.",
+      thumb: WL.thumb, details: [{ name: "T8", img: WL.t8, w: 762, h: 8000 }, { name: "TX", img: WL.tx, w: 762, h: 8000 }], pack: WL.pack },
     { slug: "secrets-black-friday", client: "gogodive", brand: "Secrets", name: "26 블랙프라이데이 프로모션", period: "2026.11.16 — 12.04", tone: "#F7E1EC", flowTone: "#EBB5CF", dot: "#F04FA8",
       head: "시크릿스 블랙프라이데이 ‘PINK ON’",
       ov: "시크릿스의 블랙프라이데이 프로모션 ‘PINK ON’ 디자인 작업을 진행했습니다. 웹·모바일 배너, 팝업 2종, 이벤트 페이지 2종, 인스타그램 콘텐츠까지 블랙과 핑크 톤으로 이어지게 작업했습니다.",
@@ -831,8 +845,8 @@ html { overflow-x: clip; }
       works: [], recipe: 2, pal: ["#6BFF2F", "#0A0A0A", "#7DB93A", "#FFFFFF"], word: "Atflee",
       spec: [["Client", "Atflee"], ["Field", "Contents Design"], ["Deliverables", "Event Banner / SNS Contents"], ["Tools", "Photoshop · Illustrator"]],
       chapters: [{ name: "Atflee", tone: "#E6F9DA", items: [] }], flowTone: "#B7EE96",
-      flow: [AF.ig, AF.mo, H_LUCKY, AF.mo, AF.ig],
-      phone: [{ img: AF.ig, t: "Lucky Festa", s: "Atflee · 최대 80% 할인" }, { img: AF.mo, t: "Lucky Festa", s: "Atflee · 모바일 배너" }],
+      flow: [AF.ig, WL.thumb, AF.mo, WL.pack[0].img, H_LUCKY, WL.pack[2].img],
+      phone: [{ img: AF.ig, t: "Lucky Festa", s: "Atflee · 최대 80% 할인" }, { img: WL.thumb, t: "Wally Edition", s: "Atflee · 상세페이지" }, { img: AF.mo, t: "Lucky Festa", s: "Atflee · 모바일 배너" }, { img: WL.pack[0].img, t: "Wally Edition", s: "Atflee · 패키지" }],
       ov: "앳플리의 시즌 프로모션과 이벤트 콘텐츠 디자인을 진행했습니다. ※ 가안 문구입니다. 실제 작업 내용으로 바꿔 주세요." },
     { slug: "roveton", name: "ROVETON", period: "Subscription Client", status: "Ongoing", role: "Brand Identity / Content Design",
       works: ["roveton-bi-guidebook"], recipe: 3, pal: ["#DF4710", "#0D0D0D", "#BFBFBF", "#FFFFFF"], word: "ROVETON", use: "roveton-bi-guidebook",
@@ -1118,18 +1132,25 @@ html { overflow-x: clip; }
   function tabsHTML(c) {
     var ks = K.filter(function (k) { return k.client === c.slug; });
     return '<section class="tb" data-tabs="' + c.slug + '"><div class="tb__bar">' + ks.map(function (k, i) {
-      var del = ["Banner", "Popup", "Event", "Instagram"].filter(function (x, j) { return [k.banner, k.popup, k.event, k.insta][j]; });
-      return '<button class="tb__t' + (i ? "" : " on") + '" data-k="' + k.slug + '" data-label="' + k.brand + " · " + k.name + '" aria-label="' + k.brand + " " + k.name + '"><span class="tb__th"><img alt="" src="' + (k.insta ? k.insta[0] : k.kv.img) + '"></span><span class="tb__tx"><small><i style="background:' + k.dot + '"></i>' + k.brand + " · " + k.period.split(" — ")[0] + "</small><b>" + k.name + "</b><em>" + del.join(" · ") + "</em></span></button>";
+      var del = ["Banner", "Popup", "Event", "Instagram", "Detail Page", "Package"].filter(function (x, j) { return [k.banner, k.popup, k.event, k.insta, k.details, k.pack][j]; });
+      return '<button class="tb__t' + (i ? "" : " on") + '" data-k="' + k.slug + '" data-label="' + k.brand + " · " + k.name + '" aria-label="' + k.brand + " " + k.name + '"><span class="tb__th"><img alt="" src="' + (k.thumb || (k.insta ? k.insta[0] : k.kv.img)) + '"></span><span class="tb__tx"><small><i style="background:' + k.dot + '"></i>' + k.brand + " · " + k.period.split(" — ")[0] + "</small><b>" + k.name + "</b><em>" + del.join(" · ") + "</em></span></button>";
     }).join("") + '</div><div class="tb__panel"></div></section>';
   }
   function panelHTML(k) {
-    var del = ["Web Banner", "Mobile Banner", "Popup", "Event Page", "Instagram"].filter(function (x, i) { return [k.banner, k.banner && k.banner.mo, k.popup, k.event, k.insta][i]; });
+    var del = ["Web Banner", "Mobile Banner", "Popup", "Event Page", "Instagram", "Detail Page", "Package"].filter(function (x, i) { return [k.banner, k.banner && k.banner.mo, k.popup, k.event, k.insta, k.details, k.pack][i]; });
     var pop = Array.isArray(k.popup) ? k.popup : (k.popup ? [k.popup] : []);
     var ev = k.event ? [].concat(k.event)[0] : null;
     var h = '<div class="tp__info"><div><b class="tp__n">' + k.name + '</b><span class="tp__p">' + k.brand + " · " + k.period + '</span></div><p>' + k.ov + '</p><div class="cl__tags">' + del.map(function (d) { return "<span>" + d + "</span>"; }).join("") + "</div></div>";
-    h += '<div class="tp__hero">' + kvHTML(k) +
+    if (k.kv || k.banner) h += '<div class="tp__hero">' + kvHTML(k) +
       (k.banner && k.banner.mo ? '<div class="tp__col"><div class="phone tp__ph" style="--sar:' + (k.banner.mw || 600) + " / " + (k.banner.mh || 1000) + '"><div class="phone__s"><img alt="모바일 배너" src="' + k.banner.mo + '">' + (pop.length ? '<div class="dim"></div><div class="pop"><img alt="팝업" src="' + pop[pop.length - 1] + '"></div>' : "") + '</div></div><span class="tp__cap">Mobile' + (pop.length ? " · Popup" : "") + "</span></div>" : "") +
       (ev ? '<div class="tp__col"><div class="tp__ev' + (ev.h / ev.w > 2 ? " scroll" : "") + '" style="aspect-ratio:' + (ev.h / ev.w > 2 ? "0.56" : ev.w + " / " + ev.h) + '"><img alt="이벤트 페이지" src="' + ev.img + '"></div><span class="tp__cap">Event Page</span></div>' : "") + "</div>";
+    if (k.details) {
+      var d0 = k.details[0];
+      h += dpHTML({ name: "Detail Page", desc: "제품 상세페이지입니다. 캐릭터 협업 포인트와 증정품, 제품 라인업까지 한 흐름으로 구성했습니다." + (k.details.length > 1 ? '<span class="dpsw">' + k.details.map(function (d, i) { return '<button data-src="' + i + '"' + (i ? "" : ' class="on"') + ">" + d.name + "</button>"; }).join("") + "</span>" : ""), rows: [["Size", d0.w + " × " + d0.h]], long: d0.img, lw: d0.w, lh: d0.h },
+        '<div class="chap__no"><em style="--dot:' + k.dot + '">상세페이지</em><span>' + k.details.map(function (d) { return d.name; }).join(" · ") + "</span></div>", k);
+    }
+    if (k.pack) h += '<section class="pk"><div class="kc__head" style="margin-bottom:28px"><div><div class="chap__no"><em style="--dot:' + k.dot + '">패키지</em><span>' + String(k.pack.length).padStart(2, "0") + ' items</span></div><h3 class="rvt">Package</h3></div><p class="rvt">제품 박스와 함께 들어가는 사용설명서, 해빗 트래커, 체크포인트 카드까지 구성물 전체를 디자인했습니다. 실제 인쇄 데이터를 목업으로 보여드립니다.</p></div>' +
+      '<div class="pk__grid">' + k.pack.map(function (x, i) { return '<figure class="rvt' + (i ? "" : " big") + '" style="--d:' + (i % 3) * 0.08 + 's"><img loading="lazy" alt="' + x.cap + '" src="' + x.img + '"><figcaption><b>' + x.cap + "</b>" + x.d + "</figcaption></figure>"; }).join("") + "</div></section>";
     if (k.subs) h += '<div class="tp__subs">' + k.subs.map(function (x) { return '<figure class="rvt"><img loading="lazy" alt="' + x.cap + '" src="' + x.img + '"><figcaption>' + x.cap + "</figcaption></figure>"; }).join("") + "</div>";
     if (k.insta) h += '<section class="igs">' + igHTML(k) + "</section>";
     return h;
@@ -1141,7 +1162,11 @@ html { overflow-x: clip; }
       var k = K.filter(function (x) { return x.slug === slug; })[0];
       btns.forEach(function (b) { b.classList.toggle("on", b.dataset.k === slug); });
       panel.innerHTML = panelHTML(k);
-      window.__scUpdate = null; initKV(k); initDetailMotion(); initIG();
+      window.__scUpdate = null; initShowcase(); initKV(k); initDetailMotion(); initIG();
+      [].slice.call(panel.querySelectorAll(".dpsw button")).forEach(function (b) { b.onclick = function () {
+        var d = k.details[+b.dataset.src]; panel.querySelectorAll(".dpsw button").forEach(function (x) { x.classList.toggle("on", x === b); });
+        panel.querySelectorAll(".dp__screen img, .dp__col img").forEach(function (im) { im.src = d.img; });
+      }; });
       setTimeout(function () { panel.querySelectorAll('.tp__ph').forEach(function (x) { x.classList.add('in'); }); }, 2900);
       var ph = [].slice.call(panel.querySelectorAll(".pcpop"));
       panel.querySelectorAll(".tp__ev").forEach(function (e) { var f = function () { e.firstElementChild.style.setProperty("--evh", e.clientHeight + "px"); }; f(); e.firstElementChild.addEventListener("load", f); });
