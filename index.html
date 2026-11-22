@@ -480,8 +480,9 @@ html { overflow-x: clip; }
 .tp__ph::before { display: none; }
 .tp__ph .phone__s { border-radius: 24px; }
 .tp__ph .phone__s > img { object-fit: cover; }
-.tp__ev { height: calc(100% - 28px); aspect-ratio: 0.56; overflow: hidden; border-radius: 6px; background: #fff; box-shadow: 0 24px 50px -30px rgba(0,0,0,.4); }
-.tp__ev img { width: 100%; display: block; animation: evScroll 14s cubic-bezier(.45,0,.55,1) 3s infinite alternate; }
+.tp__ev { height: calc(100% - 28px); overflow: hidden; border-radius: 6px; background: #fff; box-shadow: 0 24px 50px -30px rgba(0,0,0,.4); }
+.tp__ev img { width: 100%; display: block; }
+.tp__ev.scroll img { animation: evScroll 14s cubic-bezier(.45,0,.55,1) 3s infinite alternate; }
 @keyframes evScroll { 0%, 8% { transform: translateY(0); } 92%, 100% { transform: translateY(calc(-100% + var(--evh, 0px))); } }
 .tp__cap { margin-top: 10px; }
 .tb__panel .igs { padding-top: 56px; }
@@ -990,7 +991,7 @@ html { overflow-x: clip; }
       boost = boost * 0.9 + Math.min(dy, 80) * 0.06;
       var v = (0.028 + boost * 0.02) * dt;
       wcols.forEach(function (o) {
-        if (!o.h) return;
+        if (!o.h) { o.h = o.el.scrollHeight / 2; if (o.h && o.dir > 0) o.y = -o.h; if (!o.h) return; }
         o.y += v * 0.9 * o.sp * o.dir;
         if (o.y <= -o.h) o.y += o.h; if (o.y >= 0) o.y -= o.h;
         o.el.style.transform = "translate3d(0," + o.y.toFixed(1) + "px,0)";
@@ -1107,7 +1108,7 @@ html { overflow-x: clip; }
     var h = '<div class="tp__info"><div><b class="tp__n">' + k.name + '</b><span class="tp__p">' + k.brand + " · " + k.period + '</span></div><p>' + k.ov + '</p><div class="cl__tags">' + del.map(function (d) { return "<span>" + d + "</span>"; }).join("") + "</div></div>";
     h += '<div class="tp__hero">' + kvHTML(k) +
       (k.banner && k.banner.mo ? '<div class="tp__col"><div class="phone tp__ph"><div class="phone__s"><img alt="모바일 배너" src="' + k.banner.mo + '">' + (pop.length ? '<div class="dim"></div><div class="pop"><img alt="팝업" src="' + pop[pop.length - 1] + '"></div>' : "") + '</div></div><span class="tp__cap">Mobile' + (pop.length ? " · Popup" : "") + "</span></div>" : "") +
-      (ev ? '<div class="tp__col"><div class="tp__ev"><img alt="이벤트 페이지" src="' + ev.img + '"></div><span class="tp__cap">Event Page</span></div>' : "") + "</div>";
+      (ev ? '<div class="tp__col"><div class="tp__ev' + (ev.h / ev.w > 2 ? " scroll" : "") + '" style="aspect-ratio:' + (ev.h / ev.w > 2 ? "0.56" : ev.w + " / " + ev.h) + '"><img alt="이벤트 페이지" src="' + ev.img + '"></div><span class="tp__cap">Event Page</span></div>' : "") + "</div>";
     if (k.insta) h += '<section class="igs">' + igHTML(k) + "</section>";
     return h;
   }
