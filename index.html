@@ -104,6 +104,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid currentColor; outline
 
 /* ===== 공통 ===== */
 .display { font-family: var(--serif); font-weight: 500; letter-spacing: -0.04em; line-height: 1; margin: 0; }
+.display.ko { font-family: "Pretendard", var(--sans); font-weight: 700; letter-spacing: -0.05em; font-size: clamp(40px, 6vw, 96px); line-height: 1.1; }
 .fit { display: block; white-space: nowrap; }
 .fit > span { display: inline-block; }
 .link-line {
@@ -146,6 +147,20 @@ a:focus-visible, button:focus-visible { outline: 2px solid currentColor; outline
 .card__media { aspect-ratio: 372 / 185; overflow: hidden; background: #e9e5de; }
 .card__img { width: 100%; height: 100%; object-fit: cover; transition: filter 0.6s var(--ease), transform 0.9s var(--ease); }
 .card.is-hover .card__img { filter: blur(16px); transform: scale(1.06); }
+.mini { position: relative; height: 100%; display: flex; flex-direction: column; justify-content: center; gap: 8px; background: radial-gradient(70% 90% at 50% 50%, color-mix(in srgb, var(--tone) 55%, #fff), var(--tone)); overflow: hidden; }
+.mini__row { overflow: hidden; }
+.mini__row > div { display: flex; gap: 8px; width: max-content; animation: miniL 46s linear infinite; }
+.mini__row.rev > div { animation-name: miniR; }
+.mini__row img { height: clamp(90px, 10.5vw, 180px); aspect-ratio: 4 / 5; width: auto; object-fit: cover; border-radius: 8px; display: block; }
+@keyframes miniL { to { transform: translateX(-50%); } }
+@keyframes miniR { from { transform: translateX(-50%); } to { transform: none; } }
+.mini__phone { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); height: 88%; aspect-ratio: 9 / 19.2; border-radius: 22px; background: #111; padding: 5px; box-shadow: 0 24px 50px -18px rgba(0,0,0,.55); }
+.mini__scr { width: 100%; height: 100%; border-radius: 17px; overflow: hidden; background: #fff; font-family: -apple-system, "Apple SD Gothic Neo", Pretendard, sans-serif; letter-spacing: 0; }
+.mini__scr .hd { padding: 20% 9% 6%; color: #111; }
+.mini__scr .hd b { display: block; font-size: clamp(9px, .9vw, 14px); font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mini__scr .hd small { display: block; font-size: clamp(6px, .55vw, 9px); color: #888; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mini__scr img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; display: block; }
+@media (prefers-reduced-motion: reduce) { .mini__row > div { animation: none; } }
 .card__info { display: grid; grid-template-columns: 45.7% 1fr; align-items: center; min-height: 34px; padding-top: 6px; }
 .card__ov { margin: 6px 0 0; max-width: 560px; font-size: 14px; line-height: 1.55; color: rgba(15, 15, 15, 0.62); word-break: keep-all; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
 .card__info .t { font-size: 16px; text-transform: uppercase; padding-right: 12px; }
@@ -323,7 +338,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid currentColor; outline
 .kv { position: relative; overflow: hidden; margin-top: 10px; aspect-ratio: var(--ar, 1920 / 925); max-height: 92vh; width: 100%; background: var(--tone, #eee);
   clip-path: inset(14% 16% 14% 16% round 28px); transition: clip-path 1.6s cubic-bezier(0.77, 0, 0.18, 1); }
 .kv.in { clip-path: inset(0 0 0 0 round 0px); }
-.kv__img { position: absolute; inset: -4%; width: 108%; height: 108%; max-width: none; object-fit: cover; transform: translate3d(var(--mx, 0px), calc(var(--my, 0px) + var(--sy, 0px)), 0) scale(var(--sc, 1.28)); transition: transform 0.25s linear; will-change: transform; }
+.kv__img { position: absolute; inset: -1.5%; width: 103%; height: 103%; max-width: none; object-fit: cover; transform: translate3d(var(--mx, 0px), calc(var(--my, 0px) + var(--sy, 0px)), 0) scale(var(--sc, 1.15)); transition: transform 0.25s linear; will-change: transform; }
 .kv.tall .kv__img { inset: 0; width: 100%; height: 100%; object-fit: contain; z-index: 1; }
 .kv__bg { position: absolute; inset: -10%; width: 120%; height: 120%; max-width: none; object-fit: cover; filter: blur(46px) saturate(1.1); opacity: .85; transform: scale(1.1); }
 .kv__shine { position: absolute; inset: 0; z-index: 2; pointer-events: none; background: linear-gradient(105deg, transparent 35%, rgba(255,255,255,.45) 50%, transparent 65%); transform: translateX(-120%); }
@@ -664,7 +679,7 @@ html { overflow-x: clip; }
       kv: { img: SW.pc, w: 1920, h: 925 },
       banner: { pc: SW.pc, mo: SW.mo }, popup: SW.popup, event: { img: SW.ev, w: 1000, h: 1680 }, insta: SW.ig,
       igPost: { account: "laserin_swim", date: "10월 27일", likes: 26, caption: "물속에서도, 나다운 컬러로 🧡\nLASERIN SWIM WEEK\n\n눈여겨봤던 수영복부터\n스윔룩에 포인트를 더할 수모까지!\n라세린이 준비한 스윔위크 혜택을 만나보세요.\n\n👙 여자 수영복 최대 15% 할인\n\n🩳 남자 수영복 15% 할인\n\n🎀 수모 전체 10% 할인\n\n🎁 10만원 이상 구매 시\n말랑가드 수경케이스 증정\n\n📅 2026.10.27 ~ 11.06 오후 3시까지\n\n다음 수영이 더 기다려지는 이유,\n이번 스윔위크에서 찾아보세요🔥", tags: "#라세린 #수영복세일 #예쁜수영복 #오수완 #수모추천" } },
-    { slug: "secrets-black-friday", client: "gogodive", brand: "Secrets", name: "Black Friday", period: "2026.11.16 — 12.04", tone: "#F7E1EC", flowTone: "#EBB5CF", dot: "#F04FA8",
+    { slug: "secrets-black-friday", client: "gogodive", brand: "Secrets", name: "26 블랙프라이데이 프로모션", period: "2026.11.16 — 12.04", tone: "#F7E1EC", flowTone: "#EBB5CF", dot: "#F04FA8",
       head: "시크릿스 블랙프라이데이 ‘PINK ON’",
       ov: "시크릿스의 블랙프라이데이 프로모션 ‘PINK ON’ 디자인 작업을 진행했습니다. 웹·모바일 배너, 팝업 2종, 이벤트 페이지 2종, 인스타그램 콘텐츠까지 블랙과 핑크 톤으로 이어지게 작업했습니다.",
       kv: { img: BF.pc, w: 1920, h: 925 },
@@ -672,7 +687,7 @@ html { overflow-x: clip; }
       event: [{ img: BF.ev[0], w: 1000, h: 1670, name: "메인 혜택" }, { img: BF.ev[1], w: 1000, h: 1670, name: "PINK ONLY 기획전" }],
       insta: BF.ig,
       igPost: { account: "secrets", date: "11월 16일", caption: "PINK ON, BLACK FRIDAY 🖤🩷\n\n※ 캡션 가안입니다. 실제 게시글 문구로 바꿔 주세요.", tags: "#시크릿스 #블랙프라이데이 #핑크온" } },
-    { slug: "laserin-serinity", client: "gogodive", brand: "Laserin", name: "Serinity", period: "2026.11.09 — 11.18", tone: "#E2EEF8", flowTone: "#B9D6F2", dot: "#2F7BA0",
+    { slug: "laserin-serinity", client: "gogodive", brand: "Laserin", name: "서포터즈 모집 공고 콘텐츠", period: "2026.11.09 — 11.18", tone: "#E2EEF8", flowTone: "#B9D6F2", dot: "#2F7BA0",
       head: "라세린 서포터즈 ‘세리니티’ 1기 모집 공고",
       ov: "라세린 서포터즈 ‘세리니티’ 1기 모집 공고 시안 작업을 진행했습니다. 편지 봉투와 메모지 콘셉트로 표지, 세리니티 소개, 혜택, 모집 일정, 신청 방법을 인스타그램 캐러셀 5장에 담았습니다.",
       instaDesc: "모집 공고 캐러셀 5장입니다. 표지에서 모집 소식을 알리고, 세리니티 소개, 혜택, 모집 일정, 신청 방법 순서로 이어지게 구성했습니다.",
@@ -686,10 +701,10 @@ html { overflow-x: clip; }
     { slug: "lotte-hotels", name: "Lotte Hotels", period: "2024.09 — Present", status: "Ongoing", role: "Brand Content Design",
       works: ["l7-myeongdong-retro-poster"], recipe: 1, pal: ["#B5121B", "#F4E8D0", "#E8B923", "#1E1E1E"], word: "Lotte Hotels", use: "l7-myeongdong-retro-poster",
       ov: "2024년 9월부터 함께하고 있는 고객사입니다. 호텔 브랜드의 프로모션과 콘텐츠 디자인을 이어서 맡고 있습니다. ※ 가안 문구입니다. 실제 작업 내용으로 바꿔 주세요." },
-    { slug: "ksox", name: "K'sox", period: "2024.05 — Present", status: "Ongoing", role: "Brand Content Design",
+    { slug: "ksox", wall: true, name: "K'sox", period: "2024.05 — Present", status: "Ongoing", role: "Brand Content Design",
       works: [], recipe: 4, pal: ["#2F6B4F", "#F1EBDC", "#E9B44C", "#1B1B1B"], word: "K'sox",
       ov: "2024년 5월부터 함께하고 있는 고객사입니다. 브랜드 콘텐츠 디자인을 꾸준히 이어가고 있습니다. ※ 가안 문구입니다. 실제 작업 내용으로 바꿔 주세요." },
-    { slug: "millimom", name: "Millimom", period: "2026.01 — Present", status: "Ongoing", role: "Brand Content Design",
+    { slug: "millimom", wall: true, name: "Millimom", period: "2026.01 — Present", status: "Ongoing", role: "Brand Content Design",
       works: [],
       spec: [["Client", "Millimom"], ["Field", "Contents Design"], ["Deliverables", "Ad Creative · Detail Page"], ["Tools", "Photoshop · Illustrator"], ["Year", "2026 — Now"]],
       chapters: [
@@ -704,25 +719,25 @@ html { overflow-x: clip; }
     { slug: "gogodive", name: "Gogo Dive", period: "4 Brands — Ongoing", status: "Ongoing", role: "Brand Content Design", brands: ["Laserin", "Secrets", "Deepvibe", "Gogodive"],
       works: [], recipe: 3, pal: ["#1F6F8B", "#E8F4F8", "#F2C14E", "#1B1B1B"], word: "Gogo Dive",
       flowTone: "#F7C9AE", phone: [
-        { img: SW.ig[0], t: "Swim Week", s: "Laserin · 가을 할인 프로모션" }, { img: BF.ig[0], t: "Black Friday", s: "Secrets · PINK ON" }, { img: SR[0], t: "Serinity", s: "Laserin · 서포터즈 1기 모집" },
-        { img: SW.ig[1], t: "Swim Week", s: "Laserin · 여자 수영복" }, { img: BF.ig[2], t: "Black Friday", s: "Secrets · 핑크 컬러 한정 특가" }, { img: SR[2], t: "Serinity", s: "Laserin · Benefit" },
-        { img: SW.ig[2], t: "Swim Week", s: "Laserin · 수모" }, { img: BF.ig[4], t: "Black Friday", s: "Secrets · 묶음상품 추가할인" }, { img: SR[3], t: "Serinity", s: "Laserin · 모집 일정" } ],
+        { img: SW.ig[0], t: "Swim Week", s: "Laserin · 가을 할인 프로모션" }, { img: BF.ig[0], t: "26 블랙프라이데이", s: "Secrets · PINK ON" }, { img: SR[0], t: "서포터즈 모집 공고", s: "Laserin · 서포터즈 1기 모집" },
+        { img: SW.ig[1], t: "Swim Week", s: "Laserin · 여자 수영복" }, { img: BF.ig[2], t: "26 블랙프라이데이", s: "Secrets · 핑크 컬러 한정 특가" }, { img: SR[2], t: "서포터즈 모집 공고", s: "Laserin · Benefit" },
+        { img: SW.ig[2], t: "Swim Week", s: "Laserin · 수모" }, { img: BF.ig[4], t: "26 블랙프라이데이", s: "Secrets · 묶음상품 추가할인" }, { img: SR[3], t: "서포터즈 모집 공고", s: "Laserin · 모집 일정" } ],
       flow: [BF.ig[0], BF.ig[2], BF.ig[4], SW.ig[0], SR[0], SW.ig[1], SW.popup, SR[2], SW.ig[2], BF.ig[0], SR[1], SW.ig[3], SW.mo, SR[3], SW.ig[4], SR[4]],
       spec: [["Client", "Laserin · Secrets · Deepvibe · Gogodive"], ["Field", "Contents Design"], ["Deliverables", "Event / SNS Contents"], ["Tools", "Photoshop · Illustrator"], ["Year", "Ongoing"]],
       chapters: [
         { name: "Laserin", ko: "라세린", dot: "#F06A3B", tone: "#F7E6DA", line: "라세린의 시즌 프로모션과 이벤트 콘텐츠입니다. ※ 가안 문구",
-          notes: ["Swim Week — 배너 · 팝업 · 이벤트 페이지 · 인스타그램", "Serinity — 서포터즈 1기 모집 공고 (인스타그램)"],
-          items: [ { img: SW.ig[0], w: 4, h: 5, cap: "Swim Week", camp: "laserin-swim-week" }, { img: SR[0], w: 4, h: 5, cap: "Serinity", camp: "laserin-serinity" } ] },
+          notes: ["Swim Week — 배너 · 팝업 · 이벤트 페이지 · 인스타그램", "서포터즈 모집 공고 콘텐츠 — 세리니티 1기 (인스타그램)"],
+          items: [ { img: SW.ig[0], w: 4, h: 5, cap: "Swim Week", camp: "laserin-swim-week" }, { img: SR[0], w: 4, h: 5, cap: "서포터즈 모집 공고 콘텐츠", camp: "laserin-serinity" } ] },
         { name: "Secrets", ko: "시크릿스", dot: "#F04FA8", tone: "#F7E1EC", line: "시크릿스의 시즌 프로모션과 이벤트 콘텐츠입니다. ※ 가안 문구",
-          notes: ["Black Friday ‘PINK ON’ — 배너 · 팝업 · 이벤트 페이지 · 인스타그램"],
-          items: [ { img: BF.ig[0], w: 4, h: 5, cap: "Black Friday ‘PINK ON’", camp: "secrets-black-friday" } ] },
+          notes: ["26 블랙프라이데이 프로모션 — 배너 · 팝업 · 이벤트 페이지 · 인스타그램"],
+          items: [ { img: BF.ig[0], w: 4, h: 5, cap: "26 블랙프라이데이 프로모션", camp: "secrets-black-friday" } ] },
         { name: "Deepvibe", ko: "딥바이브", dot: "#1B1B1B", tone: "#E6E8EB", line: "딥바이브 작업 설명이 들어갈 자리입니다. ※ 가안 문구",
           items: [ { ph: 1, w: 1, h: 1 }, { ph: 1, w: 4, h: 5 }, { ph: 1, w: 4, h: 5 } ] },
         { name: "Gogodive", ko: "고고다이브", dot: "#1F6F8B", tone: "#E1EFF2", line: "고고다이브 작업 설명이 들어갈 자리입니다. ※ 가안 문구",
           items: [ { ph: 1, w: 4, h: 5 }, { ph: 1, w: 4, h: 5 }, { ph: 1, w: 1, h: 1 } ] }
       ],
       ov: "고고다이브에서 운영하는 네 개 브랜드(라세린, 시크릿스, 딥바이브, 고고다이브)의 디자인을 모두 맡아 진행하고 있습니다. ※ 가안 문구입니다. 실제 작업 내용으로 바꿔 주세요." },
-    { slug: "atflee", name: "Atflee", period: "—", role: "Brand Content Design",
+    { slug: "atflee", wall: true, name: "Atflee", period: "—", role: "Brand Content Design",
       works: [], recipe: 2, pal: ["#6BFF2F", "#0A0A0A", "#7DB93A", "#FFFFFF"], word: "Atflee",
       ov: "앳플리와 함께 진행한 브랜드 콘텐츠 디자인 작업입니다. ※ 가안 문구입니다. 실제 작업 내용으로 바꿔 주세요." },
     { slug: "roveton", name: "ROVETON", period: "Subscription Client", status: "Ongoing", role: "Brand Identity / Content Design",
@@ -744,8 +759,35 @@ html { overflow-x: clip; }
     c.parentOf = c.works;
   });
   function clientOf(p) { return C.filter(function (c) { return c.works.indexOf(p.slug) >= 0; })[0]; }
+  function phOf(c, n) { var a = []; for (var i = 0; i < n; i++) a.push(art(c.recipe, 0.8, i + 1, c.pal, c.word)); return a; }
+  var _cont = {};
+  function contOf(c) {
+    if (_cont[c.slug]) return _cont[c.slug];
+    var G = function (k) { return GALLERY["roveton-bi-guidebook"]; };
+    var m = {
+      "lotte-hotels": { imgs: [H_L7, SQ["l7-myeongdong-retro-poster"], H_L7].concat(phOf(c, 3)), ph: [{ img: H_L7, t: "L7 Myeongdong", s: "Lotte Hotels · Retro Posters" }] },
+      "ksox": { imgs: phOf(c, 6), ph: phOf(c, 3).map(function (x) { return { img: x, t: "K'sox", s: "작업물 정리 중" }; }) },
+      "millimom": { imgs: [MM_HERO].concat(phOf(c, 5)), ph: [{ img: MM_AD1, t: "Ad Creative", s: "Millimom · 광고소재" }] },
+      "gogodive": { imgs: (c.flow || []), ph: c.phone || [] },
+      "atflee": { imgs: [H_LUCKY].concat(phOf(c, 5)), ph: [{ img: H_LUCKY, t: "Lucky Festa", s: "Atflee · 이벤트 콘텐츠" }] },
+      "roveton": { imgs: [SQ["roveton-bi-guidebook"], G()[3].pair[0], G()[3].pair[1], G()[6].pair[0]], ph: [{ img: SQ["roveton-bi-guidebook"], t: "ROVETON", s: "Brand Identity Guidebook" }] },
+      "wanini-musical": { imgs: [H_WN, COVER["blue-lion-wanini-musical"], H_WN], ph: [{ img: H_WN, t: "푸른 사자 와니니", s: "Musical Poster" }] },
+      "personal-projects": { imgs: [THUMBS["canard-bebe"], THUMBS["kucream"], THUMBS["holy-moly-pizza"]], ph: [{ img: THUMBS["kucream"], t: "Personal Projects", s: "Branding · Package" }] }
+    };
+    var o = m[c.slug] || { imgs: [c.img], ph: [{ img: c.img, t: c.name, s: "" }] };
+    if (!o.ph.length) o.ph = [{ img: o.imgs[0], t: c.name, s: "" }];
+    return (_cont[c.slug] = o);
+  }
+  function miniHTML(c) {
+    var o = contOf(c), r = o.imgs.slice(); while (r.length < 8) r = r.concat(o.imgs);
+    var rows = [r, r.slice(3).concat(r.slice(0, 3))];
+    return '<div class="mini card__img" style="--tone:' + (c.flowTone || (c.pal && c.pal[1]) || "#efe9e1") + '">' + rows.map(function (row, i) {
+      var one = row.map(function (src) { return '<img alt="" loading="lazy" src="' + src + '">'; }).join("");
+      return '<div class="mini__row' + (i ? " rev" : "") + '"><div>' + one + one + "</div></div>";
+    }).join("") + '<div class="mini__phone"><div class="mini__scr"><div class="hd"><b>' + o.ph[0].t + "</b><small>" + (o.ph[0].s || "") + '</small></div><img alt="" src="' + o.ph[0].img + '"></div></div></div>';
+  }
   function clientCard(c) {
-    return '<a class="card" href="' + (c.project ? "#p-" + c.project : "#c-" + c.slug) + '" data-c="' + c.k + '"><div class="card__media"><img class="card__img" src="' + c.img + '" alt="' + c.name + '"></div>' +
+    return '<a class="card" href="' + (c.project ? "#p-" + c.project : "#c-" + c.slug) + '" data-c="' + c.k + '"><div class="card__media">' + miniHTML(c) + "</div>" +
       '<div class="card__info"><span class="t">' + c.name + '</span><span class="tags"><span>' + c.period + '</span></span></div>' +
       '<p class="card__ov">' + c.ov.split("※")[0].trim() + "</p></a>";
   }
@@ -837,7 +879,7 @@ html { overflow-x: clip; }
     return '<section class="wall" style="--tone:' + (tone || "#F1EBE3") + '"><div class="wall__cols">' + cols.map(function (col, c) {
       var one = col.map(function (src) { return '<img alt="" src="' + src + '">'; }).join("");
       return '<div class="wall__col" data-v="' + (c % 2 ? 1 : -1) + '">' + one + one + "</div>";
-    }).join("") + '</div><div class="wall__phone"><div class="wall__scr">' + phoneImgs.map(function (o, i) { var nx = phoneImgs[(i + 1) % phoneImgs.length]; return "<div" + (i ? "" : ' class="on"') + '><div class="hd"><b>' + o.t + "</b><small>" + o.s + '</small></div><img class="im" alt="' + o.t + '" src="' + o.img + '"><img class="nx" alt="" src="' + nx.img + '"></div>'; }).join("") + '<div class="wall__tab"><i></i><i></i><i></i><i></i><i></i></div>' + "</div></div></section>";
+    }).join("") + '</div><div class="wall__phone"><div class="wall__scr">' + phoneImgs.map(function (o, i) { var nx = phoneImgs[(i + 1) % phoneImgs.length]; return "<div" + (i ? "" : ' class="on"') + '><div class="hd"><b>' + o.t + "</b><small>" + o.s + '</small></div><img class="im" alt="' + o.t + '" src="' + o.img + '"><img class="nx" alt="" src="' + nx.img + '"></div>'; }).join("") + '<nav class="wall__tab"><i></i><i></i><i></i><i></i><i></i></nav>' + "</div></div></section>";
   }
   function flowHTML(imgs, tone, bg) {
     if (bg) {
@@ -962,11 +1004,11 @@ html { overflow-x: clip; }
     initKVmove(kv, img);
   }
   function initKVgo(kv, img) {
-    requestAnimationFrame(function () { requestAnimationFrame(function () { kv.classList.add("in"); img.style.setProperty("--sc", "1.06"); img.style.transition = "transform 2.2s cubic-bezier(0.22, 1, 0.36, 1)"; setTimeout(function () { img.style.transition = ""; }, 2300); }); });
+    requestAnimationFrame(function () { requestAnimationFrame(function () { kv.classList.add("in"); img.style.setProperty("--sc", "1"); img.style.transition = "transform 2.2s cubic-bezier(0.22, 1, 0.36, 1)"; setTimeout(function () { img.style.transition = ""; }, 2300); }); });
   }
   function initKVmove(kv, img) {
     var tmx = 0, tmy = 0;
-    kv.addEventListener("pointermove", function (e) { var r = kv.getBoundingClientRect(); tmx = ((e.clientX - r.left) / r.width - 0.5) * -26; tmy = ((e.clientY - r.top) / r.height - 0.5) * -18; img.style.setProperty("--mx", tmx.toFixed(1) + "px"); img.style.setProperty("--my", tmy.toFixed(1) + "px"); });
+    kv.addEventListener("pointermove", function (e) { var r = kv.getBoundingClientRect(); tmx = ((e.clientX - r.left) / r.width - 0.5) * -14; tmy = ((e.clientY - r.top) / r.height - 0.5) * -10; img.style.setProperty("--mx", tmx.toFixed(1) + "px"); img.style.setProperty("--my", tmy.toFixed(1) + "px"); });
     kv.addEventListener("pointerleave", function () { img.style.setProperty("--mx", "0px"); img.style.setProperty("--my", "0px"); });
     var prev = window.__scUpdate;
     window.__scUpdate = function () {
@@ -975,7 +1017,7 @@ html { overflow-x: clip; }
       if (r.bottom < 0 || r.top > vh) return;
       var p = Math.min(1, Math.max(0, -r.top / r.height));
       img.style.setProperty("--sy", (p * r.height * 0.18).toFixed(1) + "px");
-      if (kv.classList.contains("in") && !img.style.transition) img.style.setProperty("--sc", (1.06 + p * 0.12).toFixed(3));
+      if (kv.classList.contains("in") && !img.style.transition) img.style.setProperty("--sc", (1 + p * 0.06).toFixed(3));
     };
   }
   function renderCampaign(k) {
@@ -983,7 +1025,7 @@ html { overflow-x: clip; }
     var imgs = [k.insta && k.insta[0], k.popup && P0(k), k.insta && k.insta[1], k.banner && k.banner.mo, k.insta && k.insta[2], k.insta && k.insta[3], k.insta && k.insta[4]].filter(Boolean);
     var spec = [["Brand", k.brand], ["Client", c ? c.name : ""], ["Deliverables", ["Web Banner", "Mobile Banner", "Popup", "Event Page", "Instagram"].filter(function (x, i) { return [k.banner, k.banner && k.banner.mo, k.popup, k.event, k.insta][i]; }).join(" · ")], ["Period", k.period], ["Tools", "Photoshop · Illustrator"]];
     $("#viewDetail").innerHTML =
-      '<section class="detail-head">' + (c ? '<a class="crumb" href="#c-' + c.slug + '">← ' + c.name + "</a>" : "") + '<h1 class="display">' + k.name + '</h1><p class="kicker">' + k.brand + " Campaign</p></section>" + kvHTML(k) +
+      '<section class="detail-head">' + (c ? '<a class="crumb" href="#c-' + c.slug + '">← ' + c.name + "</a>" : "") + '<h1 class="display' + (/[가-힣]/.test(k.name) ? " ko" : "") + '">' + k.name + '</h1><p class="kicker">' + k.brand + " Campaign</p></section>" + kvHTML(k) +
       sumHTML(k.head, k.ov, spec) + flowHTML(imgs, k.flowTone || k.tone, (k.banner && k.banner.pc) || (k.kv && k.kv.img)) + campaignHTML(k) +
       (c ? '<section class="others"><h2 class="display">More from ' + c.name + '</h2><div class="grid">' + clientCard(c) + clientCard(C[(c.k + 1) % C.length]) + "</div></section>" : "") + contactHTML();
     initShowcase(); initKV(k); initDetailMotion(); initFlow(); initIG(); initVisit();
@@ -1055,10 +1097,10 @@ html { overflow-x: clip; }
     var others = [C[(c.k + 1) % C.length], C[(c.k + 2) % C.length]];
     $("#viewDetail").innerHTML =
       '<section class="detail-head"><a class="crumb" href="#projects">← Featured Work</a><h1 class="display">' + c.name + "</h1>" +
-      (c.flow ? "</section>" : '<div class="detail-hero"><img alt="' + c.name + '" src="' + c.cover + '"></div></section>') +
-      (c.chapters ? sumHTML(c.head, c.ov, c.spec.concat([["Role", c.role]])) + (c.flow ? wallHTML(c.flow, c.flowTone || c.chapters[0].tone, c.phone || c.flow.map(function (x) { return { img: x, t: c.name, s: "" }; })) : "") + showcaseHTML(c) :
+      (c.flow || c.wall ? "</section>" : '<div class="detail-hero"><img alt="' + c.name + '" src="' + c.cover + '"></div></section>') +
+      (c.chapters ? sumHTML(c.head, c.ov, c.spec.concat([["Role", c.role]])) + (c.flow ? wallHTML(c.flow, c.flowTone || c.chapters[0].tone, c.phone || c.flow.map(function (x) { return { img: x, t: c.name, s: "" }; })) : (c.wall ? wallHTML(contOf(c).imgs, c.flowTone || c.chapters[0].tone, contOf(c).ph) : "")) + showcaseHTML(c) :
       '<section class="detail-info"><dl>' + meta.map(function (m) { return "<div><dt>" + m[0] + "</dt><dd>" + m[1] + "</dd></div>"; }).join("") + "</dl>" +
-      '<div class="ov"><span>Overview</span><p>' + c.ov + "</p></div></section>") +
+      '<div class="ov"><span>Overview</span><p>' + c.ov + "</p></div></section>" + (c.wall ? wallHTML(contOf(c).imgs, c.flowTone || c.pal[1], contOf(c).ph) : "")) +
       (c.chapters ? "" : '<section class="others cworks"><h2 class="display">Works</h2>' +
       (c.sections ? c.sections.map(function (sec) {
         return '<div class="csec"><h3 class="csec__t"><span>' + sec.title + '</span><i>' + (sec.items.length ? String(sec.items.length).padStart(2, "0") : "Coming soon") + "</i></h3>" +
@@ -1111,7 +1153,7 @@ html { overflow-x: clip; }
     var W = 0, H = 0, visible = true, sc = 1;
     var SIZES = [132, 138, 194, 174, 132, 147, 174, 160, 150];
     var RATIO = [1, 1.415, 1, 1.25, 1, 1.414, 1, 1.25, 1.25];
-    var HERO = { 1: { img: H_L7, href: "#p-l7-myeongdong-retro-poster", name: "L7 Myeongdong Retro Posters" }, 3: { img: MM_HERO, href: "#c-millimom", name: "Millimom" }, 5: { img: H_WN, href: "#p-blue-lion-wanini-musical", name: "Blue Lion Wanini Musical" }, 6: { img: H_LUCKY, href: "#c-atflee", name: "Atflee" }, 7: { img: H_LASERIN, href: "#k-laserin-swim-week", name: "Laserin Swim Week" }, 8: { img: H_BF, href: "#k-secrets-black-friday", name: "Secrets Black Friday" } };
+    var HERO = { 1: { img: H_L7, href: "#p-l7-myeongdong-retro-poster", name: "L7 Myeongdong Retro Posters" }, 3: { img: MM_HERO, href: "#c-millimom", name: "Millimom" }, 5: { img: H_WN, href: "#p-blue-lion-wanini-musical", name: "Blue Lion Wanini Musical" }, 6: { img: H_LUCKY, href: "#c-atflee", name: "Atflee" }, 7: { img: H_LASERIN, href: "#k-laserin-swim-week", name: "Laserin Swim Week" }, 8: { img: H_BF, href: "#k-secrets-black-friday", name: "26 블랙프라이데이 프로모션" } };
     var DEPTH = [0.2, 0.85, 0.5, 1.0, 0.35, 0.7, 0.0, 0.6, 0.45];
     var AX = [0.17, 0.13, 0.19, 0.12, 0.16, 0.1, 0.18, 0.14, 0.15];
     var AY = [0.2, 0.16, 0.22, 0.17, 0.23, 0.14, 0.2, 0.21, 0.18];
