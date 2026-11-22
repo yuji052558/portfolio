@@ -670,6 +670,10 @@ html { overflow-x: clip; }
   var BF = { pc: "images/bf-pc.jpg", mo: "images/bf-mo.jpg", ev: ["images/bf-ev1.jpg", "images/bf-ev2.jpg"],
     pop: ["images/bf-pop1.jpg", "images/bf-pop2.jpg"],
     ig: ["images/bf-ig1.jpg", "images/bf-ig2.jpg", "images/bf-ig3.jpg", "images/bf-ig4.jpg", "images/bf-ig5.jpg", "images/bf-ig6.jpg"] };
+  var LBF = { pc: "images/lbf-pc.jpg", mo: "images/lbf-mo.jpg", ev: "images/lbf-ev.jpg",
+    pop: ["images/lbf-pop1.jpg", "images/lbf-pop2.jpg", "images/lbf-pop3.jpg"],
+    ig: ["images/lbf-ig1.jpg", "images/lbf-ig2.jpg", "images/lbf-ig3.jpg", "images/lbf-ig4.jpg", "images/lbf-ig5.jpg", "images/lbf-ig6.jpg"] };
+  var H_LBF = "images/h-lbf.jpg";
   var SR = ["images/sr-ig1.jpg", "images/sr-ig2.jpg", "images/sr-ig3.jpg", "images/sr-ig4.jpg", "images/sr-ig5.jpg"];
   /* 캠페인(클라이언트 안의 개별 작업) — 배너·팝업·이벤트페이지·인스타 순서로 보여줌 */
   var K = [
@@ -679,6 +683,14 @@ html { overflow-x: clip; }
       kv: { img: SW.pc, w: 1920, h: 925 },
       banner: { pc: SW.pc, mo: SW.mo }, popup: SW.popup, event: { img: SW.ev, w: 1000, h: 1680 }, insta: SW.ig,
       igPost: { account: "laserin_swim", date: "10월 27일", likes: 26, caption: "물속에서도, 나다운 컬러로 🧡\nLASERIN SWIM WEEK\n\n눈여겨봤던 수영복부터\n스윔룩에 포인트를 더할 수모까지!\n라세린이 준비한 스윔위크 혜택을 만나보세요.\n\n👙 여자 수영복 최대 15% 할인\n\n🩳 남자 수영복 15% 할인\n\n🎀 수모 전체 10% 할인\n\n🎁 10만원 이상 구매 시\n말랑가드 수경케이스 증정\n\n📅 2026.10.27 ~ 11.06 오후 3시까지\n\n다음 수영이 더 기다려지는 이유,\n이번 스윔위크에서 찾아보세요🔥", tags: "#라세린 #수영복세일 #예쁜수영복 #오수완 #수모추천" } },
+    { slug: "laserin-black-friday", client: "gogodive", brand: "Laserin", name: "26 블랙프라이데이 프로모션", period: "2026.11.23 — 12.07", tone: "#DCEBFA", flowTone: "#9CC6F0", dot: "#0E7FD6",
+      head: "라세린 2026 블랙프라이데이 ‘할인 레인 입장!’",
+      ov: "라세린의 2026 블랙프라이데이 프로모션 디자인 작업을 진행했습니다. 수영장 레인과 안내 표지판을 모티프로 웹·모바일 배너, 팝업 3종, 이벤트 페이지, 인스타그램 콘텐츠까지 하나의 톤으로 이어지게 작업했습니다.",
+      kv: { img: LBF.pc, w: 1920, h: 925 },
+      banner: { pc: LBF.pc, mo: LBF.mo }, popup: LBF.pop,
+      event: { img: LBF.ev, w: 1000, h: 1680 },
+      insta: LBF.ig,
+      igPost: { account: "laserin_swim", date: "11월 23일", caption: "라세린 2026 최대 세일 💙\nBLACK FRIDAY 할인 레인 입장!\n\n※ 캡션 가안입니다. 실제 게시글 문구로 바꿔 주세요.", tags: "#라세린 #블랙프라이데이 #수영복세일" } },
     { slug: "secrets-black-friday", client: "gogodive", brand: "Secrets", name: "26 블랙프라이데이 프로모션", period: "2026.11.16 — 12.04", tone: "#F7E1EC", flowTone: "#EBB5CF", dot: "#F04FA8",
       head: "시크릿스 블랙프라이데이 ‘PINK ON’",
       ov: "시크릿스의 블랙프라이데이 프로모션 ‘PINK ON’ 디자인 작업을 진행했습니다. 웹·모바일 배너, 팝업 2종, 이벤트 페이지 2종, 인스타그램 콘텐츠까지 블랙과 핑크 톤으로 이어지게 작업했습니다.",
@@ -719,15 +731,15 @@ html { overflow-x: clip; }
     { slug: "gogodive", name: "Gogo Dive", period: "4 Brands — Ongoing", status: "Ongoing", role: "Brand Content Design", brands: ["Laserin", "Secrets", "Deepvibe", "Gogodive"],
       works: [], recipe: 3, pal: ["#1F6F8B", "#E8F4F8", "#F2C14E", "#1B1B1B"], word: "Gogo Dive",
       flowTone: "#F7C9AE", phone: [
-        { img: SW.ig[0], t: "Swim Week", s: "Laserin · 가을 할인 프로모션" }, { img: BF.ig[0], t: "26 블랙프라이데이", s: "Secrets · PINK ON" }, { img: SR[0], t: "서포터즈 모집 공고", s: "Laserin · 서포터즈 1기 모집" },
+        { img: LBF.ig[0], t: "26 블랙프라이데이", s: "Laserin · 할인 레인 입장" }, { img: SW.ig[0], t: "Swim Week", s: "Laserin · 가을 할인 프로모션" }, { img: BF.ig[0], t: "26 블랙프라이데이", s: "Secrets · PINK ON" }, { img: SR[0], t: "서포터즈 모집 공고", s: "Laserin · 서포터즈 1기 모집" },
         { img: SW.ig[1], t: "Swim Week", s: "Laserin · 여자 수영복" }, { img: BF.ig[2], t: "26 블랙프라이데이", s: "Secrets · 핑크 컬러 한정 특가" }, { img: SR[2], t: "서포터즈 모집 공고", s: "Laserin · Benefit" },
         { img: SW.ig[2], t: "Swim Week", s: "Laserin · 수모" }, { img: BF.ig[4], t: "26 블랙프라이데이", s: "Secrets · 묶음상품 추가할인" }, { img: SR[3], t: "서포터즈 모집 공고", s: "Laserin · 모집 일정" } ],
-      flow: [BF.ig[0], BF.ig[2], BF.ig[4], SW.ig[0], SR[0], SW.ig[1], SW.popup, SR[2], SW.ig[2], BF.ig[0], SR[1], SW.ig[3], SW.mo, SR[3], SW.ig[4], SR[4]],
+      flow: [LBF.ig[0], BF.ig[0], LBF.ig[1], BF.ig[2], LBF.ig[3], BF.ig[4], SW.ig[0], SR[0], SW.ig[1], SW.popup, SR[2], SW.ig[2], BF.ig[0], SR[1], SW.ig[3], SW.mo, SR[3], SW.ig[4], SR[4]],
       spec: [["Client", "Laserin · Secrets · Deepvibe · Gogodive"], ["Field", "Contents Design"], ["Deliverables", "Event / SNS Contents"], ["Tools", "Photoshop · Illustrator"], ["Year", "Ongoing"]],
       chapters: [
         { name: "Laserin", ko: "라세린", dot: "#F06A3B", tone: "#F7E6DA", line: "라세린의 시즌 프로모션과 이벤트 콘텐츠입니다. ※ 가안 문구",
-          notes: ["Swim Week — 배너 · 팝업 · 이벤트 페이지 · 인스타그램", "서포터즈 모집 공고 콘텐츠 — 세리니티 1기 (인스타그램)"],
-          items: [ { img: SW.ig[0], w: 4, h: 5, cap: "Swim Week", camp: "laserin-swim-week" }, { img: SR[0], w: 4, h: 5, cap: "서포터즈 모집 공고 콘텐츠", camp: "laserin-serinity" } ] },
+          notes: ["Swim Week — 배너 · 팝업 · 이벤트 페이지 · 인스타그램", "서포터즈 모집 공고 콘텐츠 — 세리니티 1기 (인스타그램)", "26 블랙프라이데이 프로모션 — 배너 · 팝업 · 이벤트 페이지 · 인스타그램"],
+          items: [ { img: SW.ig[0], w: 4, h: 5, cap: "Swim Week", camp: "laserin-swim-week" }, { img: SR[0], w: 4, h: 5, cap: "서포터즈 모집 공고 콘텐츠", camp: "laserin-serinity" }, { img: LBF.ig[0], w: 4, h: 5, cap: "26 블랙프라이데이 프로모션", camp: "laserin-black-friday" } ] },
         { name: "Secrets", ko: "시크릿스", dot: "#F04FA8", tone: "#F7E1EC", line: "시크릿스의 시즌 프로모션과 이벤트 콘텐츠입니다. ※ 가안 문구",
           notes: ["26 블랙프라이데이 프로모션 — 배너 · 팝업 · 이벤트 페이지 · 인스타그램"],
           items: [ { img: BF.ig[0], w: 4, h: 5, cap: "26 블랙프라이데이 프로모션", camp: "secrets-black-friday" } ] },
@@ -1152,8 +1164,8 @@ html { overflow-x: clip; }
     var hero = $("#top"), trail = $("#trail"), cdot = $("#cdot"), cchip = $("#cchip");
     var W = 0, H = 0, visible = true, sc = 1;
     var SIZES = [132, 138, 194, 174, 132, 147, 174, 160, 150];
-    var RATIO = [1, 1.415, 1, 1.25, 1, 1.414, 1, 1.25, 1.25];
-    var HERO = { 1: { img: H_L7, href: "#p-l7-myeongdong-retro-poster", name: "L7 Myeongdong Retro Posters" }, 3: { img: MM_HERO, href: "#c-millimom", name: "Millimom" }, 5: { img: H_WN, href: "#p-blue-lion-wanini-musical", name: "Blue Lion Wanini Musical" }, 6: { img: H_LUCKY, href: "#c-atflee", name: "Atflee" }, 7: { img: H_LASERIN, href: "#k-laserin-swim-week", name: "Laserin Swim Week" }, 8: { img: H_BF, href: "#k-secrets-black-friday", name: "26 블랙프라이데이 프로모션" } };
+    var RATIO = [1.25, 1.415, 1, 1.25, 1, 1.414, 1, 1.25, 1.25];
+    var HERO = { 0: { img: H_LBF, href: "#k-laserin-black-friday", name: "라세린 26 블랙프라이데이" }, 1: { img: H_L7, href: "#p-l7-myeongdong-retro-poster", name: "L7 Myeongdong Retro Posters" }, 3: { img: MM_HERO, href: "#c-millimom", name: "Millimom" }, 5: { img: H_WN, href: "#p-blue-lion-wanini-musical", name: "Blue Lion Wanini Musical" }, 6: { img: H_LUCKY, href: "#c-atflee", name: "Atflee" }, 7: { img: H_LASERIN, href: "#k-laserin-swim-week", name: "Laserin Swim Week" }, 8: { img: H_BF, href: "#k-secrets-black-friday", name: "26 블랙프라이데이 프로모션" } };
     var DEPTH = [0.2, 0.85, 0.5, 1.0, 0.35, 0.7, 0.0, 0.6, 0.45];
     var AX = [0.17, 0.13, 0.19, 0.12, 0.16, 0.1, 0.18, 0.14, 0.15];
     var AY = [0.2, 0.16, 0.22, 0.17, 0.23, 0.14, 0.2, 0.21, 0.18];
