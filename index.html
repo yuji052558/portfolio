@@ -496,7 +496,10 @@ html { overflow-x: clip; }
 .pk__grid img { width: 100%; display: block; border-radius: 6px; }
 .pk__grid figure.big img { aspect-ratio: 16 / 8; object-fit: cover; }
 .pk__grid figcaption { display: flex; gap: 10px; margin-top: 10px; font-size: 13px; color: var(--mute); } .pk__grid figcaption b { color: #0F0F0F; font-weight: 600; }
-@media (max-width: 800px) { .pk__grid { grid-template-columns: 1fr; } }
+.pk__flat { margin: 0; } .pk__flat img { width: 100%; display: block; border-radius: 6px; }
+.pk__flat figcaption { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin-top: 14px; font-size: 13px; color: var(--mute); }
+.pk__flat figcaption b { display: block; color: #0F0F0F; font-weight: 600; margin-bottom: 2px; }
+@media (max-width: 800px) { .pk__flat figcaption { grid-template-columns: repeat(2, minmax(0, 1fr)); } .pk__grid { grid-template-columns: 1fr; } }
 @media (max-width: 800px) { .tp__subs { flex-direction: column; } }
 .tp__ev.scroll img { animation: evScroll 14s cubic-bezier(.45,0,.55,1) 3s infinite alternate; }
 @keyframes evScroll { 0%, 8% { transform: translateY(0); } 92%, 100% { transform: translateY(calc(-100% + var(--evh, 0px))); } }
@@ -752,7 +755,7 @@ html { overflow-x: clip; }
     ig: ["images/lbf-ig1.jpg", "images/lbf-ig2.jpg", "images/lbf-ig3.jpg", "images/lbf-ig4.jpg", "images/lbf-ig5.jpg", "images/lbf-ig6.jpg"] };
   var H_LBF = "images/h-lbf.jpg";
   var AF = { pc: "images/af-pc.jpg", mo: "images/af-mo.jpg", ig: "images/af-ig.jpg", s1: "images/af-sub1.jpg", s2: "images/af-sub2.jpg" };
-  var WL = { t8: "images/wl-t8.jpg", tx: "images/wl-tx.jpg", thumb: "images/wl-thumb.jpg",
+  var WL = { flat: "images/wl-flat.jpg", t8: "images/wl-t8.jpg", tx: "images/wl-tx.jpg", thumb: "images/wl-thumb.jpg",
     pack: [{ img: "images/wl-box.jpg", cap: "Package Box", d: "T8 체중계 패키지 박스" }, { img: "images/wl-manual.jpg", cap: "User Manual", d: "TX 사용설명서 (표지 · 내지)" }, { img: "images/wl-habit.jpg", cap: "Habit Tracker", d: "월리 해빗 트래커 (증정품)" }, { img: "images/wl-card.jpg", cap: "Checkpoint Card", d: "사용 전 필수 체크포인트 카드" }] };
   var SR = ["images/sr-ig1.jpg", "images/sr-ig2.jpg", "images/sr-ig3.jpg", "images/sr-ig4.jpg", "images/sr-ig5.jpg"];
   /* 캠페인(클라이언트 안의 개별 작업) — 배너·팝업·이벤트페이지·인스타 순서로 보여줌 */
@@ -782,7 +785,7 @@ html { overflow-x: clip; }
     { slug: "atflee-wally-edition", client: "atflee", brand: "Atflee", name: "Wally Edition", period: "2024.12 — 2025.02", tone: "#FBE3E3", flowTone: "#F6B9B9", dot: "#E2231A",
       head: "앳플리 × 월리를 찾아라 ‘월리 에디션’",
       ov: "앳플리 T8·TX 디지털 체중계와 ‘월리를 찾아라’ 캐릭터가 만난 월리 에디션의 상세페이지와 패키지를 디자인했습니다. 상세페이지부터 패키지 박스, 사용설명서, 해빗 트래커, 체크포인트 카드까지 제품에 함께 들어가는 구성물 전체를 하나의 톤으로 맞췄습니다.",
-      thumb: WL.thumb, details: [{ name: "T8", img: WL.t8, w: 762, h: 8000 }, { name: "TX", img: WL.tx, w: 762, h: 8000 }], pack: WL.pack },
+      thumb: WL.thumb, flat: WL.flat, details: [{ name: "T8", img: WL.t8, w: 762, h: 8000 }, { name: "TX", img: WL.tx, w: 762, h: 8000 }], pack: WL.pack },
     { slug: "secrets-black-friday", client: "gogodive", brand: "Secrets", name: "26 블랙프라이데이 프로모션", period: "2026.11.16 — 12.04", tone: "#F7E1EC", flowTone: "#EBB5CF", dot: "#F04FA8",
       head: "시크릿스 블랙프라이데이 ‘PINK ON’",
       ov: "시크릿스의 블랙프라이데이 프로모션 ‘PINK ON’ 디자인 작업을 진행했습니다. 웹·모바일 배너, 팝업 2종, 이벤트 페이지 2종, 인스타그램 콘텐츠까지 블랙과 핑크 톤으로 이어지게 작업했습니다.",
@@ -845,8 +848,8 @@ html { overflow-x: clip; }
       works: [], recipe: 2, pal: ["#6BFF2F", "#0A0A0A", "#7DB93A", "#FFFFFF"], word: "Atflee",
       spec: [["Client", "Atflee"], ["Field", "Contents Design"], ["Deliverables", "Event Banner / SNS Contents"], ["Tools", "Photoshop · Illustrator"]],
       chapters: [{ name: "Atflee", tone: "#E6F9DA", items: [] }], flowTone: "#B7EE96",
-      flow: [AF.ig, WL.thumb, AF.mo, WL.pack[0].img, H_LUCKY, WL.pack[2].img],
-      phone: [{ img: AF.ig, t: "Lucky Festa", s: "Atflee · 최대 80% 할인" }, { img: WL.thumb, t: "Wally Edition", s: "Atflee · 상세페이지" }, { img: AF.mo, t: "Lucky Festa", s: "Atflee · 모바일 배너" }, { img: WL.pack[0].img, t: "Wally Edition", s: "Atflee · 패키지" }],
+      flow: [AF.ig, WL.thumb, AF.mo, H_LUCKY],
+      phone: [{ img: AF.ig, t: "Lucky Festa", s: "Atflee · 최대 80% 할인" }, { img: WL.thumb, t: "Wally Edition", s: "Atflee · 상세페이지" }, { img: AF.mo, t: "Lucky Festa", s: "Atflee · 모바일 배너" }],
       ov: "앳플리의 시즌 프로모션과 이벤트 콘텐츠 디자인을 진행했습니다. ※ 가안 문구입니다. 실제 작업 내용으로 바꿔 주세요." },
     { slug: "roveton", name: "ROVETON", period: "Subscription Client", status: "Ongoing", role: "Brand Identity / Content Design",
       works: ["roveton-bi-guidebook"], recipe: 3, pal: ["#DF4710", "#0D0D0D", "#BFBFBF", "#FFFFFF"], word: "ROVETON", use: "roveton-bi-guidebook",
@@ -1150,7 +1153,7 @@ html { overflow-x: clip; }
         '<div class="chap__no"><em style="--dot:' + k.dot + '">상세페이지</em><span>' + k.details.map(function (d) { return d.name; }).join(" · ") + "</span></div>", k);
     }
     if (k.pack) h += '<section class="pk"><div class="kc__head" style="margin-bottom:28px"><div><div class="chap__no"><em style="--dot:' + k.dot + '">패키지</em><span>' + String(k.pack.length).padStart(2, "0") + ' items</span></div><h3 class="rvt">Package</h3></div><p class="rvt">제품 박스와 함께 들어가는 사용설명서, 해빗 트래커, 체크포인트 카드까지 구성물 전체를 디자인했습니다. 실제 인쇄 데이터를 목업으로 보여드립니다.</p></div>' +
-      '<div class="pk__grid">' + k.pack.map(function (x, i) { return '<figure class="rvt' + (i ? "" : " big") + '" style="--d:' + (i % 3) * 0.08 + 's"><img loading="lazy" alt="' + x.cap + '" src="' + x.img + '"><figcaption><b>' + x.cap + "</b>" + x.d + "</figcaption></figure>"; }).join("") + "</div></section>";
+      (k.flat ? '<figure class="pk__flat rvt"><img loading="lazy" alt="패키지 구성물 전체" src="' + k.flat + '"><figcaption>' + k.pack.map(function (x) { return "<span><b>" + x.cap + "</b>" + x.d + "</span>"; }).join("") + "</figcaption></figure>" : '<div class="pk__grid">' + k.pack.map(function (x, i) { return '<figure class="rvt' + (i ? "" : " big") + '" style="--d:' + (i % 3) * 0.08 + 's"><img loading="lazy" alt="' + x.cap + '" src="' + x.img + '"><figcaption><b>' + x.cap + "</b>" + x.d + "</figcaption></figure>"; }).join("") + "</div>") + "</section>";
     if (k.subs) h += '<div class="tp__subs">' + k.subs.map(function (x) { return '<figure class="rvt"><img loading="lazy" alt="' + x.cap + '" src="' + x.img + '"><figcaption>' + x.cap + "</figcaption></figure>"; }).join("") + "</div>";
     if (k.insta) h += '<section class="igs">' + igHTML(k) + "</section>";
     return h;
