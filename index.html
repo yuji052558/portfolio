@@ -490,6 +490,7 @@ html { overflow-x: clip; }
 .tp__subs figcaption { margin-top: 8px; font-size: 11px; color: var(--mute); text-transform: uppercase; }
 .igp.sq .igp__media { aspect-ratio: 1; }
 .igp__track video, .igp__thumbs video { flex: none; width: 100%; height: 100%; object-fit: cover; display: block; }
+.pop.cyc { display: grid; } .pop.cyc img { grid-area: 1 / 1; opacity: 0; transition: opacity .7s ease; } .pop.cyc img.on { opacity: 1; }
 .fd__bar { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; max-width: 920px; margin: 0 auto 24px; }
 .fd__bar button { display: inline-flex; gap: 8px; padding: 8px 14px; border-radius: 20px; border: 1px solid rgba(15,15,15,.16); font-size: 13px; color: var(--mute); transition: all .3s; }
 .fd__bar button b { font-weight: 600; color: #0F0F0F; } .fd__bar button.on { background: #0F0F0F; color: rgba(255,255,255,.7); border-color: #0F0F0F; } .fd__bar button.on b { color: #fff; }
@@ -767,7 +768,7 @@ html { overflow-x: clip; }
   var WL = { tiles: ["images/wt-a.jpg", "images/wt-b.jpg", "images/wt-c.jpg", "images/wt-d.jpg", "images/wt-e.jpg"], t8: "images/wl-t8.jpg", tx: "images/wl-tx.jpg", thumb: "images/wl-thumb.jpg",
     pack: [{ img: "images/wl-box.jpg", cap: "Package Box", d: "T8 체중계 패키지 박스" }, { img: "images/wl-manual.jpg", cap: "User Manual", d: "TX 사용설명서 (표지 · 내지)" }, { img: "images/wl-habit.jpg", cap: "Habit Tracker", d: "월리 해빗 트래커 (증정품)" }, { img: "images/wl-card.jpg", cap: "Checkpoint Card", d: "사용 전 필수 체크포인트 카드" }] };
   var MBF = (function () { var d = function (n) { return "data:image/jpeg;base64,__MBF_" + n + "__"; };
-    return { v1: "images/mbf-v1.mp4", v1p: "images/mbf-v1p.jpg", v6: "images/mbf-v6.mp4", i: ["images/mbf-0.jpg", "images/mbf-1.jpg", "images/mbf-2.jpg", "images/mbf-3.jpg", "images/mbf-4.jpg", "images/mbf-5.jpg", "images/mbf-6.jpg", "images/mbf-7.jpg", "images/mbf-8.jpg", "images/mbf-9.jpg"] }; })();
+    return { pc: "images/mbf-pc.jpg", mo: "images/mbf-mo.jpg", pop: ["images/mbf-pop1.jpg", "images/mbf-pop2.jpg", "images/mbf-pop3.jpg"], v1: "images/mbf-v1.mp4", v1p: "images/mbf-v1p.jpg", v6: "images/mbf-v6.mp4", i: ["images/mbf-0.jpg", "images/mbf-1.jpg", "images/mbf-2.jpg", "images/mbf-3.jpg", "images/mbf-4.jpg", "images/mbf-5.jpg", "images/mbf-6.jpg", "images/mbf-7.jpg", "images/mbf-8.jpg", "images/mbf-9.jpg"] }; })();
   var SR = ["images/sr-ig1.jpg", "images/sr-ig2.jpg", "images/sr-ig3.jpg", "images/sr-ig4.jpg", "images/sr-ig5.jpg"];
   /* 캠페인(클라이언트 안의 개별 작업) — 배너·팝업·이벤트페이지·인스타 순서로 보여줌 */
   var K = [
@@ -799,8 +800,10 @@ html { overflow-x: clip; }
       thumb: WL.thumb, tiles: WL.tiles, details: [{ name: "T8", img: WL.t8, w: 762, h: 8000 }, { name: "TX", img: WL.tx, w: 762, h: 8000 }], pack: WL.pack },
     { slug: "millimom-black-milli-day", client: "millimom", brand: "Millimom", name: "Black (MiLLi) Day", period: "2026.11.08 — 11.16", tone: "#E3EEDC", flowTone: "#B8D3A8", dot: "#5E8C4E",
       head: "밀리맘 블랙프라이데이 ‘BLACK (MiLLi) DAY’",
-      ov: "‘LOVE IN EVERY MOMENT’를 주제로 한 밀리맘 블랙프라이데이 프로모션의 인스타그램 피드를 디자인했습니다. 영화관과 블랙박스 콘셉트로 티저 영상부터 BLACK BOX · BLACK TAG 이벤트, 신제품 공개까지 이어지는 피드 시리즈를 만들었습니다.",
+      ov: "‘LOVE IN EVERY MOMENT’를 주제로 한 밀리맘 블랙프라이데이 프로모션을 디자인했습니다. 웹·모바일 배너와 팝업 3종, 그리고 영화관과 블랙박스 콘셉트로 티저 영상부터 BLACK BOX · BLACK TAG 이벤트, 신제품 공개까지 이어지는 피드 시리즈를 만들었습니다.",
       thumb: MBF.i[1],
+      kv: { img: MBF.pc, w: 3000, h: 1400 },
+      banner: { pc: MBF.pc, mo: MBF.mo, mw: 1000, mh: 1500 }, popup: MBF.pop,
       feeds: [
         { label: "Teaser", insta: [MBF.v1, MBF.i[0], MBF.i[1]] },
         { label: "Black Box Teaser", insta: [MBF.i[2], MBF.i[3], MBF.i[4]] },
@@ -1171,17 +1174,17 @@ html { overflow-x: clip; }
   function tabsHTML(c) {
     var ks = K.filter(function (k) { return k.client === c.slug; });
     return '<section class="tb" data-tabs="' + c.slug + '"><div class="tb__bar">' + ks.map(function (k, i) {
-      var del = ["Banner", "Popup", "Event", "Instagram", "Detail Page", "Package"].filter(function (x, j) { return [k.banner, k.popup, k.event, k.insta, k.details, k.pack][j]; });
+      var del = ["Banner", "Popup", "Event", "Instagram", "Detail Page", "Package"].filter(function (x, j) { return [k.banner, k.popup, k.event, k.insta || k.feeds, k.details, k.pack][j]; });
       return '<button class="tb__t' + (i ? "" : " on") + '" data-k="' + k.slug + '" data-label="' + k.brand + " · " + k.name + '" aria-label="' + k.brand + " " + k.name + '"><span class="tb__th"><img alt="" src="' + (k.thumb || (k.insta ? k.insta[0] : k.kv.img)) + '"></span><span class="tb__tx"><small><i style="background:' + k.dot + '"></i>' + k.brand + " · " + k.period.split(" — ")[0] + "</small><b>" + k.name + "</b><em>" + del.join(" · ") + "</em></span></button>";
     }).join("") + '</div><div class="tb__panel"></div></section>';
   }
   function panelHTML(k) {
-    var del = ["Web Banner", "Mobile Banner", "Popup", "Event Page", "Instagram", "Detail Page", "Package"].filter(function (x, i) { return [k.banner, k.banner && k.banner.mo, k.popup, k.event, k.insta, k.details, k.pack][i]; });
+    var del = ["Web Banner", "Mobile Banner", "Popup", "Event Page", "Instagram", "Detail Page", "Package"].filter(function (x, i) { return [k.banner, k.banner && k.banner.mo, k.popup, k.event, k.insta || k.feeds, k.details, k.pack][i]; });
     var pop = Array.isArray(k.popup) ? k.popup : (k.popup ? [k.popup] : []);
     var ev = k.event ? [].concat(k.event)[0] : null;
     var h = '<div class="tp__info"><div><b class="tp__n">' + k.name + '</b><span class="tp__p">' + k.brand + " · " + k.period + '</span></div><p>' + k.ov + '</p><div class="cl__tags">' + del.map(function (d) { return "<span>" + d + "</span>"; }).join("") + "</div></div>";
     if (k.kv || k.banner) h += '<div class="tp__hero">' + kvHTML(k) +
-      (k.banner && k.banner.mo ? '<div class="tp__col"><div class="phone tp__ph" style="--sar:' + (k.banner.mw || 600) + " / " + (k.banner.mh || 1000) + '"><div class="phone__s"><img alt="모바일 배너" src="' + k.banner.mo + '">' + (pop.length ? '<div class="dim"></div><div class="pop"><img alt="팝업" src="' + pop[pop.length - 1] + '"></div>' : "") + '</div></div><span class="tp__cap">Mobile' + (pop.length ? " · Popup" : "") + "</span></div>" : "") +
+      (k.banner && k.banner.mo ? '<div class="tp__col"><div class="phone tp__ph" style="--sar:' + (k.banner.mw || 600) + " / " + (k.banner.mh || 1000) + '"><div class="phone__s"><img alt="모바일 배너" src="' + k.banner.mo + '">' + (pop.length ? '<div class="dim"></div><div class="pop' + (pop.length > 2 ? " cyc" : "") + '">' + (pop.length > 2 ? pop.map(function (src, i) { return '<img alt="팝업 ' + (i + 1) + '"' + (i ? "" : ' class="on"') + ' src="' + src + '">'; }).join("") : '<img alt="팝업" src="' + pop[pop.length - 1] + '">') + "</div>" : "") + '</div></div><span class="tp__cap">Mobile' + (pop.length ? " · Popup" : "") + "</span></div>" : "") +
       (ev ? '<div class="tp__col"><div class="tp__ev' + (ev.h / ev.w > 2 ? " scroll" : "") + '" style="aspect-ratio:' + (ev.h / ev.w > 2 ? "0.56" : ev.w + " / " + ev.h) + '"><img alt="이벤트 페이지" src="' + ev.img + '"></div><span class="tp__cap">Event Page</span></div>' : "") + "</div>";
     if (k.details) {
       var d0 = k.details[0];
@@ -1204,6 +1207,9 @@ html { overflow-x: clip; }
       btns.forEach(function (b) { b.classList.toggle("on", b.dataset.k === slug); });
       panel.innerHTML = panelHTML(k);
       window.__scUpdate = null; initShowcase(); initKV(k); initDetailMotion(); initIG();
+      clearInterval(window.__popCyc);
+      var cyc = [].slice.call(panel.querySelectorAll(".pop.cyc img")), ci = 0;
+      if (cyc.length) window.__popCyc = setInterval(function () { if (!document.body.contains(cyc[0])) return clearInterval(window.__popCyc); cyc[ci].classList.remove("on"); ci = (ci + 1) % cyc.length; cyc[ci].classList.add("on"); }, 2200);
       [].slice.call(panel.querySelectorAll(".fd__bar button")).forEach(function (b) { b.onclick = function () {
         panel.querySelectorAll(".fd__bar button").forEach(function (x) { x.classList.toggle("on", x === b); });
         panel.querySelectorAll(".fd__p").forEach(function (p, i) { p.hidden = i !== +b.dataset.f; });
