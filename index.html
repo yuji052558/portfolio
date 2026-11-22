@@ -489,6 +489,10 @@ html { overflow-x: clip; }
 .tp__subs figure { margin: 0; flex: 1; } .tp__subs img { width: 100%; display: block; border-radius: 6px; box-shadow: 0 18px 36px -26px rgba(0,0,0,.45); }
 .tp__subs figcaption { margin-top: 8px; font-size: 11px; color: var(--mute); text-transform: uppercase; }
 .igp.sq .igp__media { aspect-ratio: 1; }
+.igp__track video, .igp__thumbs video { flex: none; width: 100%; height: 100%; object-fit: cover; display: block; }
+.fd__bar { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; max-width: 920px; margin: 0 auto 24px; }
+.fd__bar button { display: inline-flex; gap: 8px; padding: 8px 14px; border-radius: 20px; border: 1px solid rgba(15,15,15,.16); font-size: 13px; color: var(--mute); transition: all .3s; }
+.fd__bar button b { font-weight: 600; color: #0F0F0F; } .fd__bar button.on { background: #0F0F0F; color: rgba(255,255,255,.7); border-color: #0F0F0F; } .fd__bar button.on b { color: #fff; }
 .dpsw { display: flex; gap: 6px; margin-top: 18px; } .dpsw button { padding: 7px 16px; border-radius: 20px; border: 1px solid rgba(15,15,15,.2); font-size: 13px; } .dpsw button.on { background: #0F0F0F; color: #fff; border-color: #0F0F0F; }
 .pk { padding: 120px 24px 0; }
 .pk__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
@@ -762,6 +766,8 @@ html { overflow-x: clip; }
   var AF = { pc: "images/af-pc.jpg", mo: "images/af-mo.jpg", ig: "images/af-ig.jpg", s1: "images/af-sub1.jpg", s2: "images/af-sub2.jpg" };
   var WL = { tiles: ["images/wt-a.jpg", "images/wt-b.jpg", "images/wt-c.jpg", "images/wt-d.jpg", "images/wt-e.jpg"], t8: "images/wl-t8.jpg", tx: "images/wl-tx.jpg", thumb: "images/wl-thumb.jpg",
     pack: [{ img: "images/wl-box.jpg", cap: "Package Box", d: "T8 체중계 패키지 박스" }, { img: "images/wl-manual.jpg", cap: "User Manual", d: "TX 사용설명서 (표지 · 내지)" }, { img: "images/wl-habit.jpg", cap: "Habit Tracker", d: "월리 해빗 트래커 (증정품)" }, { img: "images/wl-card.jpg", cap: "Checkpoint Card", d: "사용 전 필수 체크포인트 카드" }] };
+  var MBF = (function () { var d = function (n) { return "data:image/jpeg;base64,__MBF_" + n + "__"; };
+    return { v1: "images/mbf-v1.mp4", v1p: "images/mbf-v1p.jpg", v6: "images/mbf-v6.mp4", i: ["images/mbf-0.jpg", "images/mbf-1.jpg", "images/mbf-2.jpg", "images/mbf-3.jpg", "images/mbf-4.jpg", "images/mbf-5.jpg", "images/mbf-6.jpg", "images/mbf-7.jpg", "images/mbf-8.jpg", "images/mbf-9.jpg"] }; })();
   var SR = ["images/sr-ig1.jpg", "images/sr-ig2.jpg", "images/sr-ig3.jpg", "images/sr-ig4.jpg", "images/sr-ig5.jpg"];
   /* 캠페인(클라이언트 안의 개별 작업) — 배너·팝업·이벤트페이지·인스타 순서로 보여줌 */
   var K = [
@@ -791,6 +797,22 @@ html { overflow-x: clip; }
       head: "앳플리 × 월리를 찾아라 ‘월리 에디션’",
       ov: "앳플리 T8·TX 디지털 체중계와 ‘월리를 찾아라’ 캐릭터가 만난 월리 에디션의 상세페이지와 패키지를 디자인했습니다. 상세페이지부터 패키지 박스, 사용설명서, 해빗 트래커, 체크포인트 카드까지 제품에 함께 들어가는 구성물 전체를 하나의 톤으로 맞췄습니다.",
       thumb: WL.thumb, tiles: WL.tiles, details: [{ name: "T8", img: WL.t8, w: 762, h: 8000 }, { name: "TX", img: WL.tx, w: 762, h: 8000 }], pack: WL.pack },
+    { slug: "millimom-black-milli-day", client: "millimom", brand: "Millimom", name: "Black (MiLLi) Day", period: "2026.11.08 — 11.16", tone: "#E3EEDC", flowTone: "#B8D3A8", dot: "#5E8C4E",
+      head: "밀리맘 블랙프라이데이 ‘BLACK (MiLLi) DAY’",
+      ov: "‘LOVE IN EVERY MOMENT’를 주제로 한 밀리맘 블랙프라이데이 프로모션의 인스타그램 피드를 디자인했습니다. 영화관과 블랙박스 콘셉트로 티저 영상부터 BLACK BOX · BLACK TAG 이벤트, 신제품 공개까지 이어지는 피드 시리즈를 만들었습니다.",
+      thumb: MBF.i[1],
+      feeds: [
+        { label: "Teaser", insta: [MBF.v1, MBF.i[0], MBF.i[1]] },
+        { label: "Black Box Teaser", insta: [MBF.i[2], MBF.i[3], MBF.i[4]] },
+        { label: "Black Box Event", insta: [MBF.i[5], MBF.i[6], MBF.i[7], MBF.i[8]] },
+        { label: "Black Tag Event", insta: [MBF.v6, MBF.i[9]] }
+      ],
+      igPost: { account: "millimom_official", date: "11월 9일", caption: "LOVE IN EVERY MOMENT 🖤\nBLACK (MiLLi) DAY\n\n※ 캡션 가안입니다. 실제 게시글 문구로 바꿔 주세요.", tags: "#밀리맘 #블랙밀리데이 #블랙프라이데이" } },
+    { slug: "millimom-ad-creative", client: "millimom", brand: "Millimom", name: "Ad Creative", period: "2026", tone: "#E8F4E0", dot: "#3CB43C",
+      head: "밀리맘 광고소재",
+      ov: "밀리맘의 시즌 프로모션 광고소재입니다. ※ 가안 문구입니다. 실제 작업 내용으로 바꿔 주세요.",
+      thumb: "images/mm-hero.gif", insta: ["images/mm-ad1.gif"],
+      igPost: { account: "millimom_official", date: "", caption: "※ 광고소재 설명 가안입니다.", tags: "#밀리맘" } },
     { slug: "secrets-black-friday", client: "gogodive", brand: "Secrets", name: "26 블랙프라이데이 프로모션", period: "2026.11.16 — 12.04", tone: "#F7E1EC", flowTone: "#EBB5CF", dot: "#F04FA8",
       head: "시크릿스 블랙프라이데이 ‘PINK ON’",
       ov: "시크릿스의 블랙프라이데이 프로모션 ‘PINK ON’ 디자인 작업을 진행했습니다. 웹·모바일 배너, 팝업 2종, 이벤트 페이지 2종, 인스타그램 콘텐츠까지 블랙과 핑크 톤으로 이어지게 작업했습니다.",
@@ -816,9 +838,11 @@ html { overflow-x: clip; }
     { slug: "ksox", wall: true, name: "K'sox", period: "2024.05 — Present", status: "Ongoing", role: "Brand Content Design",
       works: [], recipe: 4, pal: ["#2F6B4F", "#F1EBDC", "#E9B44C", "#1B1B1B"], word: "K'sox",
       ov: "2024년 5월부터 함께하고 있는 고객사입니다. 브랜드 콘텐츠 디자인을 꾸준히 이어가고 있습니다. ※ 가안 문구입니다. 실제 작업 내용으로 바꿔 주세요." },
-    { slug: "millimom", wall: true, name: "Millimom", period: "2026.01 — Present", status: "Ongoing", role: "Brand Content Design",
+    { slug: "millimom", tabs: true, flow: [MBF.i[1], MBF.v1p, MBF.i[2], MBF.i[5], MM_HERO, MBF.i[8], MBF.i[4], MBF.i[9]], flowTone: "#B8D3A8",
+      phone: [{ img: MBF.i[1], t: "Black (MiLLi) Day", s: "Millimom · 블랙프라이데이" }, { img: MBF.i[2], t: "Black Box", s: "Millimom · 티저" }, { img: MBF.i[5], t: "Black Box Event", s: "Millimom · 이벤트" }, { img: MBF.i[9], t: "Black Tag", s: "Millimom · 신제품 공개" }, { img: MM_HERO, t: "Ad Creative", s: "Millimom · 광고소재" }],
+      name: "Millimom", period: "2026.01 — Present", status: "Ongoing", role: "Brand Content Design",
       works: [],
-      spec: [["Client", "Millimom"], ["Field", "Contents Design"], ["Deliverables", "Ad Creative · Detail Page"], ["Tools", "Photoshop · Illustrator"], ["Year", "2026 — Now"]],
+      spec: [["Client", "Millimom"], ["Field", "Contents Design"], ["Deliverables", "SNS Contents · Ad Creative · Detail Page"], ["Tools", "Photoshop · Illustrator"], ["Year", "2026 — Now"]],
       chapters: [
         { name: "Ad Creative", ko: "광고소재", dot: "#3CB43C", tone: "#E8F4E0", line: "밀리맘의 시즌 프로모션 광고소재입니다. ※ 가안 문구",
           notes: ["고보습 아토크림 프로모션 — 모션(GIF)"],
@@ -1050,18 +1074,25 @@ html { overflow-x: clip; }
   }
   function P0(k) { return Array.isArray(k.popup) ? k.popup[0] : k.popup; }
   function P1(k) { return Array.isArray(k.popup) ? k.popup[k.popup.length - 1] : k.popup; }
+  function isVid(src) { return /^data:video|\.mp4$/.test(src); }
+  function mediaHTML(src, alt) { return isVid(src) ? '<video src="' + src + '" muted loop playsinline autoplay preload="metadata"></video>' : '<img alt="' + (alt || "") + '" src="' + src + '">'; }
+  function feedsHTML(k) {
+    return '<div class="fd">' + (k.feeds.length > 1 ? '<div class="fd__bar">' + k.feeds.map(function (f, i) { return '<button data-f="' + i + '"' + (i ? "" : ' class="on"') + '><b>' + String(i + 1).padStart(2, "0") + "</b>" + f.label + "</button>"; }).join("") + "</div>" : "") +
+      k.feeds.map(function (f, i) { return '<div class="fd__p"' + (i ? " hidden" : "") + ">" + igHTML({ insta: f.insta, igPost: f.post || k.igPost, igSq: f.sq, brand: k.brand }) + "</div>"; }).join("") + "</div>";
+  }
   function igHTML(k) {
     var g = k.igPost || {}, n = k.insta.length;
     var cap = (g.caption || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/\n/g, "<br>");
-    return '<div class="igp rvt' + (k.igSq ? " sq" : "") + '" data-ig><div class="igp__media"><div class="igp__track">' + k.insta.map(function (src, i) { return '<img alt="인스타그램 ' + (i + 1) + '" src="' + src + '">'; }).join("") + "</div>" +
+    return '<div class="igp rvt' + (k.igSq ? " sq" : "") + '" data-ig><div class="igp__media"><div class="igp__track">' + k.insta.map(function (src, i) { return mediaHTML(src, "인스타그램 " + (i + 1)); }).join("") + "</div>" +
       '<button class="igp__nav prev" aria-label="이전">‹</button><button class="igp__nav next" aria-label="다음">›</button><div class="igp__dots">' + k.insta.map(function (x, i) { return "<i" + (i ? "" : ' class="on"') + "></i>"; }).join("") + "</div></div>" +
       '<div class="igp__side"><div class="igp__head"><span class="igp__av">' + (g.account || k.brand).charAt(0).toUpperCase() + '</span><b>' + (g.account || k.brand.toLowerCase()) + '</b><span class="igp__ck"></span><span class="igp__f">· 팔로우</span><span class="igp__more">···</span></div>' +
       '<div class="igp__body"><span class="igp__av">' + (g.account || k.brand).charAt(0).toUpperCase() + '</span><p><b>' + (g.account || k.brand.toLowerCase()) + "</b> " + cap + (g.tags ? '<br><br><span class="igp__tag">' + g.tags + "</span>" : "") + "</p></div>" +
       '<div class="igp__foot"><div class="igp__ic"><span>♡</span><span>◯</span><span>⟲</span><span>➢</span><span class="r">⊓</span></div>' + (g.likes ? "<b>좋아요 " + g.likes + "개</b>" : "") + "<small>" + (g.date || "") + '</small></div><div class="igp__cm">☺ <span>댓글 달기...</span><em>게시</em></div></div></div>' +
-      '<div class="igp__thumbs">' + k.insta.map(function (src, i) { return '<button data-i="' + i + '"' + (i ? "" : ' class="on"') + '><img alt="" src="' + src + '"></button>'; }).join("") + "</div>";
+      '<div class="igp__thumbs">' + k.insta.map(function (src, i) { return '<button data-i="' + i + '"' + (i ? "" : ' class="on"') + ">" + mediaHTML(src) + "</button>"; }).join("") + "</div>";
   }
   function initIG() {
     [].slice.call(document.querySelectorAll("#viewDetail [data-ig]")).forEach(function (el) {
+      if (el.dataset.on) return; el.dataset.on = 1;
       var tr = el.querySelector(".igp__track"), dots = [].slice.call(el.querySelectorAll(".igp__dots i")), th = [].slice.call(el.nextElementSibling.querySelectorAll("button")), n = dots.length, i = 0, t = 0, vis = false;
       function go(j) { i = (j + n) % n; tr.style.transform = "translateX(" + (-i * 100) + "%)"; dots.forEach(function (d, k) { d.classList.toggle("on", k === i); }); th.forEach(function (d, k) { d.classList.toggle("on", k === i); }); el.querySelector(".prev").style.opacity = i ? 1 : 0; el.querySelector(".next").style.opacity = i < n - 1 ? 1 : 0; }
       function auto() { clearInterval(t); t = setInterval(function () { if (vis && document.body.contains(el)) go(i + 1); else if (!document.body.contains(el)) clearInterval(t); }, 2600); }
@@ -1161,7 +1192,8 @@ html { overflow-x: clip; }
       (k.tiles ? '<div class="pk__tiles">' + k.tiles.map(function (src, i) { var cap = [null, k.pack[0], k.pack[1], k.pack[2], k.pack[3]][i];
         return '<figure class="rvt' + (i ? "" : " wide") + '" style="--d:' + (i % 2) * 0.08 + 's"><img loading="lazy" alt="' + (cap ? cap.cap : "Package") + '" src="' + src + '">' + (cap ? "<figcaption><b>" + cap.cap + "</b>" + cap.d + "</figcaption>" : "") + "</figure>"; }).join("") + "</div>" : '<div class="pk__grid">' + k.pack.map(function (x, i) { return '<figure class="rvt' + (i ? "" : " big") + '" style="--d:' + (i % 3) * 0.08 + 's"><img loading="lazy" alt="' + x.cap + '" src="' + x.img + '"><figcaption><b>' + x.cap + "</b>" + x.d + "</figcaption></figure>"; }).join("") + "</div>") + "</section>";
     if (k.subs) h += '<div class="tp__subs">' + k.subs.map(function (x) { return '<figure class="rvt"><img loading="lazy" alt="' + x.cap + '" src="' + x.img + '"><figcaption>' + x.cap + "</figcaption></figure>"; }).join("") + "</div>";
-    if (k.insta) h += '<section class="igs">' + igHTML(k) + "</section>";
+    if (k.feeds) h += '<section class="igs">' + feedsHTML(k) + "</section>";
+    else if (k.insta) h += '<section class="igs">' + igHTML(k) + "</section>";
     return h;
   }
   function initTabs() {
@@ -1172,6 +1204,11 @@ html { overflow-x: clip; }
       btns.forEach(function (b) { b.classList.toggle("on", b.dataset.k === slug); });
       panel.innerHTML = panelHTML(k);
       window.__scUpdate = null; initShowcase(); initKV(k); initDetailMotion(); initIG();
+      [].slice.call(panel.querySelectorAll(".fd__bar button")).forEach(function (b) { b.onclick = function () {
+        panel.querySelectorAll(".fd__bar button").forEach(function (x) { x.classList.toggle("on", x === b); });
+        panel.querySelectorAll(".fd__p").forEach(function (p, i) { p.hidden = i !== +b.dataset.f; });
+        initIG(); panel.querySelectorAll(".fd__p:not([hidden]) .rvt").forEach(function (r) { r.classList.add("in"); });
+      }; });
       [].slice.call(panel.querySelectorAll(".dpsw button")).forEach(function (b) { b.onclick = function () {
         var d = k.details[+b.dataset.src]; panel.querySelectorAll(".dpsw button").forEach(function (x) { x.classList.toggle("on", x === b); });
         panel.querySelectorAll(".dp__screen img, .dp__col img").forEach(function (im) { im.src = d.img; });
