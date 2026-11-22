@@ -443,6 +443,53 @@ a:focus-visible, button:focus-visible { outline: 2px solid currentColor; outline
 .detail-head + .flow { margin-top: 28px; }
 @media (max-width: 800px) { .sum { grid-template-columns: 1fr; gap: 20px; } .sum__r h3 { font-size: 21px; } .sum__spec div { grid-template-columns: 100px minmax(0, 1fr); } }
 html { overflow-x: clip; }
+.cl h2 sup { font-size: .3em; vertical-align: top; color: var(--mute); font-family: var(--sans); letter-spacing: 0; }
+.cl__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; margin-top: 36px; }
+.cl__card { display: block; }
+.cl__img { aspect-ratio: 4 / 5; overflow: hidden; border-radius: 10px; }
+.cl__img img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s var(--ease); }
+.cl__card:hover .cl__img img { transform: scale(1.04); }
+.cl__meta { display: flex; justify-content: space-between; margin-top: 14px; font-size: 12px; color: var(--mute); text-transform: uppercase; }
+.cl__b { display: inline-flex; align-items: center; gap: 6px; } .cl__b i { width: 8px; height: 8px; border-radius: 50%; }
+.cl__t { display: block; margin-top: 6px; font-size: 19px; font-weight: 600; letter-spacing: -0.03em; }
+.cl__tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; } .cl__tags span { font-size: 11px; padding: 4px 9px; border: 1px solid rgba(15,15,15,.18); border-radius: 20px; }
+@media (max-width: 800px) { .cl__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.tb { margin-top: 72px; }
+.tb__bar { position: sticky; top: 52px; z-index: 20; display: flex; gap: 8px; padding: 12px 24px; overflow-x: auto; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(15,15,15,.08); scrollbar-width: none; }
+.tb__t { flex: none; display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 30px; border: 1px solid rgba(15,15,15,.15); font-size: 14px; letter-spacing: -0.02em; transition: background .3s, color .3s, border-color .3s; }
+.tb__t small { font-size: 11px; color: var(--mute); text-transform: uppercase; letter-spacing: .04em; }
+.tb__t i { width: 8px; height: 8px; border-radius: 50%; }
+.tb__t.on { background: #0F0F0F; color: #fff; border-color: #0F0F0F; } .tb__t.on small { color: rgba(255,255,255,.6); }
+.tb__panel { padding-top: 20px; }
+.tb__panel .kv { margin-top: 0; }
+.tp__hero { display: flex; gap: 18px; height: min(calc((100vw - 90px) / 3.34), 78vh); margin: 28px 24px 0; justify-content: center; }
+.tp__hero .kv { flex: none; height: 100%; aspect-ratio: 1920 / 925; max-height: none; width: auto; margin: 0; border-radius: 6px; }
+.tp__hero .kv:not(.tall) .kv__img { inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.tp__col { flex: none; height: 100%; display: flex; flex-direction: column; }
+.tp__ph { height: calc(100% - 28px); width: auto; aspect-ratio: 600 / 1000; max-width: none; border-radius: 30px; padding: 7px; margin: 0; }
+.tp__ph::before { display: none; }
+.tp__ph .phone__s { border-radius: 24px; }
+.tp__ph .phone__s > img { object-fit: cover; }
+.tp__ev { height: calc(100% - 28px); aspect-ratio: 0.56; overflow: hidden; border-radius: 6px; background: #fff; box-shadow: 0 24px 50px -30px rgba(0,0,0,.4); }
+.tp__ev img { width: 100%; display: block; animation: evScroll 14s cubic-bezier(.45,0,.55,1) 3s infinite alternate; }
+@keyframes evScroll { 0%, 8% { transform: translateY(0); } 92%, 100% { transform: translateY(calc(-100% + var(--evh, 0px))); } }
+.tp__cap { margin-top: 10px; }
+.tb__panel .igs { padding-top: 56px; }
+@media (max-width: 800px) { .tp__hero { height: auto; flex-wrap: wrap; } .tp__hero .kv { flex-basis: 100%; aspect-ratio: 1920 / 925; } .tp__col { height: 340px; } }
+.tp__info { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 6fr) minmax(0, 3fr); gap: 32px; align-items: start; margin: 36px 24px 0; }
+.tp__n { display: block; font-size: 26px; font-weight: 700; letter-spacing: -0.03em; } .tp__p { display: block; margin-top: 6px; font-size: 13px; color: var(--mute); text-transform: uppercase; }
+.tp__info p { margin: 0; font-size: 16px; line-height: 1.75; color: rgba(15,15,15,.72); }
+.tp__duo { display: grid; grid-template-columns: minmax(0, 8fr) minmax(0, 3fr); gap: 40px; align-items: center; margin: 64px 24px 0; }
+.tp__duo .phone { max-width: 300px; }
+.tp__cap { display: block; margin-top: 14px; font-size: 12px; color: var(--mute); text-transform: uppercase; text-align: center; }
+.tp__strip { display: flex; gap: 14px; align-items: flex-end; margin: 64px 24px 0; overflow-x: auto; padding-bottom: 8px; }
+.tp__strip figure { flex: none; margin: 0; width: clamp(150px, 15vw, 230px); }
+.tp__strip figure.tall { width: clamp(150px, 15vw, 230px); }
+.tp__tile { aspect-ratio: 4 / 5; overflow: hidden; border-radius: 8px; box-shadow: 0 18px 36px -26px rgba(0,0,0,.45); }
+.tp__strip .tall .tp__tile { aspect-ratio: 4 / 5; }
+.tp__tile img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.tp__strip figcaption { margin-top: 8px; font-size: 11px; color: var(--mute); text-transform: uppercase; }
+@media (max-width: 800px) { .tp__info, .tp__duo { grid-template-columns: 1fr; } }
 .soon { margin: 20px 0 0; font-size: 15px; color: var(--mute); }
 .others {  padding-top: clamp(100px, 12vw, 200px); }
 
@@ -1019,6 +1066,7 @@ html { overflow-x: clip; }
     requestAnimationFrame(function () { requestAnimationFrame(function () { kv.classList.add("in"); img.style.setProperty("--sc", "1"); img.style.transition = "transform 2.2s cubic-bezier(0.22, 1, 0.36, 1)"; setTimeout(function () { img.style.transition = ""; }, 2300); }); });
   }
   function initKVmove(kv, img) {
+    if (kv.closest(".tp__hero")) return;
     var tmx = 0, tmy = 0;
     kv.addEventListener("pointermove", function (e) { var r = kv.getBoundingClientRect(); tmx = ((e.clientX - r.left) / r.width - 0.5) * -14; tmy = ((e.clientY - r.top) / r.height - 0.5) * -10; img.style.setProperty("--mx", tmx.toFixed(1) + "px"); img.style.setProperty("--my", tmy.toFixed(1) + "px"); });
     kv.addEventListener("pointerleave", function () { img.style.setProperty("--mx", "0px"); img.style.setProperty("--my", "0px"); });
@@ -1032,13 +1080,56 @@ html { overflow-x: clip; }
       if (kv.classList.contains("in") && !img.style.transition) img.style.setProperty("--sc", (1 + p * 0.06).toFixed(3));
     };
   }
+  function tabsHTML(c) {
+    var ks = K.filter(function (k) { return k.client === c.slug; });
+    return '<section class="tb" data-tabs="' + c.slug + '"><div class="tb__bar">' + ks.map(function (k, i) {
+      return '<button class="tb__t' + (i ? "" : " on") + '" data-k="' + k.slug + '"><i style="background:' + k.dot + '"></i><small>' + k.brand + "</small>" + k.name + "</button>";
+    }).join("") + '</div><div class="tb__panel"></div></section>';
+  }
+  function panelHTML(k) {
+    var del = ["Web Banner", "Mobile Banner", "Popup", "Event Page", "Instagram"].filter(function (x, i) { return [k.banner, k.banner && k.banner.mo, k.popup, k.event, k.insta][i]; });
+    var pop = Array.isArray(k.popup) ? k.popup : (k.popup ? [k.popup] : []);
+    var ev = k.event ? [].concat(k.event)[0] : null;
+    var h = '<div class="tp__info"><div><b class="tp__n">' + k.name + '</b><span class="tp__p">' + k.brand + " · " + k.period + '</span></div><p>' + k.ov + '</p><div class="cl__tags">' + del.map(function (d) { return "<span>" + d + "</span>"; }).join("") + "</div></div>";
+    h += '<div class="tp__hero">' + kvHTML(k) +
+      (k.banner && k.banner.mo ? '<div class="tp__col"><div class="phone tp__ph"><div class="phone__s"><img alt="모바일 배너" src="' + k.banner.mo + '">' + (pop.length ? '<div class="dim"></div><div class="pop"><img alt="팝업" src="' + pop[pop.length - 1] + '"></div>' : "") + '</div></div><span class="tp__cap">Mobile' + (pop.length ? " · Popup" : "") + "</span></div>" : "") +
+      (ev ? '<div class="tp__col"><div class="tp__ev"><img alt="이벤트 페이지" src="' + ev.img + '"></div><span class="tp__cap">Event Page</span></div>' : "") + "</div>";
+    if (k.insta) h += '<section class="igs">' + igHTML(k) + "</section>";
+    return h;
+  }
+  function initTabs() {
+    var tb = document.querySelector("#viewDetail [data-tabs]"); if (!tb) return;
+    var panel = tb.querySelector(".tb__panel"), btns = [].slice.call(tb.querySelectorAll(".tb__t"));
+    function show(slug, scroll) {
+      var k = K.filter(function (x) { return x.slug === slug; })[0];
+      btns.forEach(function (b) { b.classList.toggle("on", b.dataset.k === slug); });
+      panel.innerHTML = panelHTML(k);
+      window.__scUpdate = null; initKV(k); initDetailMotion(); initIG();
+      setTimeout(function () { panel.querySelectorAll('.tp__ph').forEach(function (x) { x.classList.add('in'); }); }, 2900);
+      var ph = [].slice.call(panel.querySelectorAll(".pcpop"));
+      panel.querySelectorAll(".tp__ev").forEach(function (e) { var f = function () { e.firstElementChild.style.setProperty("--evh", e.clientHeight + "px"); }; f(); e.firstElementChild.addEventListener("load", f); });
+      var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }); }, { threshold: 0.35 });
+      ph.forEach(function (e) { io.observe(e); });
+      if (scroll) window.scrollTo({ top: tb.getBoundingClientRect().top + window.scrollY - 70, behavior: "smooth" });
+    }
+    btns.forEach(function (b) { b.onclick = function () { show(b.dataset.k, true); }; });
+    show(btns[0].dataset.k, false);
+  }
+  function campListHTML(c) {
+    var ks = K.filter(function (k) { return k.client === c.slug; });
+    return '<section class="others cl"><h2 class="display">Campaigns <sup>' + String(ks.length).padStart(2, "0") + '</sup></h2><div class="cl__grid">' + ks.map(function (k) {
+      var del = ["Banner", "Popup", "Event Page", "Instagram"].filter(function (x, i) { return [k.banner, k.popup, k.event, k.insta][i]; });
+      return '<a class="cl__card" href="#k-' + k.slug + '"><div class="cl__img" style="background:' + (k.flowTone || k.tone) + '"><img alt="' + k.name + '" src="' + (k.insta ? k.insta[0] : k.kv.img) + '"></div>' +
+        '<div class="cl__meta"><span class="cl__b"><i style="background:' + k.dot + '"></i>' + k.brand + '</span><span>' + k.period + '</span></div><b class="cl__t">' + k.name + '</b><div class="cl__tags">' + del.map(function (d) { return "<span>" + d + "</span>"; }).join("") + "</div></a>";
+    }).join("") + "</div></section>";
+  }
   function renderCampaign(k) {
     var c = C.filter(function (x) { return x.slug === k.client; })[0];
     var imgs = [k.insta && k.insta[0], k.popup && P0(k), k.insta && k.insta[1], k.banner && k.banner.mo, k.insta && k.insta[2], k.insta && k.insta[3], k.insta && k.insta[4]].filter(Boolean);
     var spec = [["Brand", k.brand], ["Client", c ? c.name : ""], ["Deliverables", ["Web Banner", "Mobile Banner", "Popup", "Event Page", "Instagram"].filter(function (x, i) { return [k.banner, k.banner && k.banner.mo, k.popup, k.event, k.insta][i]; }).join(" · ")], ["Period", k.period], ["Tools", "Photoshop · Illustrator"]];
     $("#viewDetail").innerHTML =
       '<section class="detail-head">' + (c ? '<a class="crumb" href="#c-' + c.slug + '">← ' + c.name + "</a>" : "") + '<h1 class="display' + (/[가-힣]/.test(k.name) ? " ko" : "") + '">' + k.name + '</h1><p class="kicker">' + k.brand + " Campaign</p></section>" + kvHTML(k) +
-      sumHTML(k.head, k.ov, spec) + flowHTML(imgs, k.flowTone || k.tone, (k.banner && k.banner.pc) || (k.kv && k.kv.img)) + campaignHTML(k) +
+      sumHTML(k.head, k.ov, spec) + campaignHTML(k) +
       (c ? '<section class="others"><h2 class="display">More from ' + c.name + '</h2><div class="grid">' + clientCard(c) + clientCard(C[(c.k + 1) % C.length]) + "</div></section>" : "") + contactHTML();
     initShowcase(); initKV(k); initDetailMotion(); initFlow(); initIG(); initVisit();
     var phones = [].slice.call(document.querySelectorAll("#viewDetail .kc .phone, #viewDetail .pcpop"));
@@ -1111,7 +1202,7 @@ html { overflow-x: clip; }
     $("#viewDetail").innerHTML =
       '<section class="detail-head"><a class="crumb" href="#projects">← Featured Work</a><h1 class="display">' + c.name + "</h1>" +
       (c.flow || c.wall ? "</section>" : '<div class="detail-hero"><img alt="' + c.name + '" src="' + c.cover + '"></div></section>') +
-      (c.chapters ? sumHTML(c.head, c.ov, c.spec.concat([["Role", c.role]])) + (c.flow ? wallHTML(c.flow, c.flowTone || c.chapters[0].tone, c.phone || c.flow.map(function (x) { return { img: x, t: c.name, s: "" }; })) : (c.wall ? wallHTML(contOf(c).imgs, c.flowTone || c.chapters[0].tone, contOf(c).ph) : "")) + showcaseHTML(c) :
+      (c.chapters ? sumHTML(c.head, c.ov, c.spec.concat([["Role", c.role]])) + (c.slug === "gogodive" ? tabsHTML(c) : (c.flow ? wallHTML(c.flow, c.flowTone || c.chapters[0].tone, c.phone || c.flow.map(function (x) { return { img: x, t: c.name, s: "" }; })) : (c.wall ? wallHTML(contOf(c).imgs, c.flowTone || c.chapters[0].tone, contOf(c).ph) : "")) + showcaseHTML(c)) :
       '<section class="detail-info"><dl>' + meta.map(function (m) { return "<div><dt>" + m[0] + "</dt><dd>" + m[1] + "</dd></div>"; }).join("") + "</dl>" +
       '<div class="ov"><span>Overview</span><p>' + c.ov + "</p></div></section>" + (c.wall ? wallHTML(contOf(c).imgs, c.flowTone || c.pal[1], contOf(c).ph) : "")) +
       (c.chapters ? "" : '<section class="others cworks"><h2 class="display">Works</h2>' +
@@ -1121,7 +1212,7 @@ html { overflow-x: clip; }
       }).join("") : "") +
       (works.length ? '<div class="grid">' + works.map(cardHTML).join("") + "</div>" : (c.sections ? "" : '<p class="soon">작업물을 정리하고 있습니다. Coming soon.</p>')) + "</section>") +
       '<section class="others"><h2 class="display">More Work</h2><div class="grid">' + clientCard(others[0]) + clientCard(others[1]) + "</div></section>" + contactHTML();
-    initDetailMotion(); initShowcase(); initFlow(); initVisit();
+    initDetailMotion(); initShowcase(); initFlow(); initTabs(); initVisit();
   }
 
   function renderDetail(p) {
