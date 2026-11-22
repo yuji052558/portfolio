@@ -455,11 +455,21 @@ html { overflow-x: clip; }
 .cl__tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; } .cl__tags span { font-size: 11px; padding: 4px 9px; border: 1px solid rgba(15,15,15,.18); border-radius: 20px; }
 @media (max-width: 800px) { .cl__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .tb { margin-top: 72px; }
-.tb__bar { position: sticky; top: 0; z-index: 20; display: flex; gap: 8px; padding: 56px 24px 12px; overflow-x: auto; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(15,15,15,.08); scrollbar-width: none; }
-.tb__t { flex: none; display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 30px; border: 1px solid rgba(15,15,15,.15); font-size: 14px; letter-spacing: -0.02em; transition: background .3s, color .3s, border-color .3s; }
-.tb__t small { font-size: 11px; color: var(--mute); text-transform: uppercase; letter-spacing: .04em; }
-.tb__t i { width: 8px; height: 8px; border-radius: 50%; }
-.tb__t.on { background: #0F0F0F; color: #fff; border-color: #0F0F0F; } .tb__t.on small { color: rgba(255,255,255,.6); }
+.tb__bar { position: sticky; top: 0; z-index: 20; display: flex; gap: 10px; align-items: center; padding: 56px 24px 12px; overflow: visible; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(15,15,15,.08); scrollbar-width: none; }
+.tb__t { flex: none; position: relative; display: block; padding: 3px; border-radius: 10px; border: 1.5px solid transparent; background: none; opacity: .45; transition: opacity .3s, border-color .3s, transform .3s; }
+.tb__t .tb__tx { display: none; }
+.tb__t:hover { transform: translateY(-3px); }
+.tb__t::after { content: attr(data-label); position: absolute; left: 50%; top: calc(100% + 6px); transform: translateX(-50%); white-space: nowrap; padding: 6px 10px; border-radius: 6px; background: #0F0F0F; color: #fff; font-size: 12px; opacity: 0; pointer-events: none; transition: opacity .25s; z-index: 3; }
+.tb__t:hover::after { opacity: 1; }
+.tb__t:hover { opacity: .85; }
+.tb__t.on { opacity: 1; border-color: #0F0F0F; box-shadow: 0 10px 24px -16px rgba(0,0,0,.45); }
+.tb__th { display: block; width: 60px; aspect-ratio: 4 / 5; border-radius: 7px; overflow: hidden; }
+.tb__th img { width: 100%; height: 100%; object-fit: cover; }
+.tb__tx { display: grid; gap: 3px; }
+.tb__tx small { display: inline-flex; align-items: center; gap: 6px; font-size: 10.5px; color: var(--mute); text-transform: uppercase; letter-spacing: .04em; }
+.tb__tx small i { width: 7px; height: 7px; border-radius: 50%; }
+.tb__tx b { font-size: 14px; font-weight: 600; white-space: nowrap; }
+.tb__tx em { font-style: normal; font-size: 11px; color: var(--mute); }
 .tb__panel { padding-top: 20px; }
 .tb__panel .kv { margin-top: 0; }
 .tp__hero { display: flex; gap: 18px; height: min(calc((100vw - 90px) / 3.34), 78vh); margin: 28px 24px 0; justify-content: center; }
@@ -478,7 +488,7 @@ html { overflow-x: clip; }
 .tb__panel .igp { max-width: 920px; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); }
 .tb__panel .igp__media { max-height: 72vh; }
 .tb__panel .igp__side { max-height: 72vh; }
-@media (max-width: 800px) { .tp__hero { height: auto; flex-wrap: wrap; } .tp__hero .kv { flex-basis: 100%; aspect-ratio: 1920 / 925; } .tp__col { height: 340px; } }
+@media (max-width: 800px) { .tb__bar { overflow-x: auto; } .tp__hero { height: auto; flex-wrap: wrap; } .tp__hero .kv { flex-basis: 100%; aspect-ratio: 1920 / 925; } .tp__col { height: 340px; } }
 .tp__info { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 6fr) minmax(0, 3fr); gap: 32px; align-items: start; margin: 36px 24px 0; }
 .tp__n { display: block; font-size: 26px; font-weight: 700; letter-spacing: -0.03em; } .tp__p { display: block; margin-top: 6px; font-size: 13px; color: var(--mute); text-transform: uppercase; }
 .tp__info p { margin: 0; font-size: 16px; line-height: 1.75; color: rgba(15,15,15,.72); }
@@ -1086,7 +1096,8 @@ html { overflow-x: clip; }
   function tabsHTML(c) {
     var ks = K.filter(function (k) { return k.client === c.slug; });
     return '<section class="tb" data-tabs="' + c.slug + '"><div class="tb__bar">' + ks.map(function (k, i) {
-      return '<button class="tb__t' + (i ? "" : " on") + '" data-k="' + k.slug + '"><i style="background:' + k.dot + '"></i><small>' + k.brand + "</small>" + k.name + "</button>";
+      var del = ["Banner", "Popup", "Event", "Instagram"].filter(function (x, j) { return [k.banner, k.popup, k.event, k.insta][j]; });
+      return '<button class="tb__t' + (i ? "" : " on") + '" data-k="' + k.slug + '" data-label="' + k.brand + " · " + k.name + '" aria-label="' + k.brand + " " + k.name + '"><span class="tb__th"><img alt="" src="' + (k.insta ? k.insta[0] : k.kv.img) + '"></span><span class="tb__tx"><small><i style="background:' + k.dot + '"></i>' + k.brand + " · " + k.period.split(" — ")[0] + "</small><b>" + k.name + "</b><em>" + del.join(" · ") + "</em></span></button>";
     }).join("") + '</div><div class="tb__panel"></div></section>';
   }
   function panelHTML(k) {
@@ -1205,7 +1216,7 @@ html { overflow-x: clip; }
     $("#viewDetail").innerHTML =
       '<section class="detail-head"><a class="crumb" href="#projects">← Featured Work</a><h1 class="display">' + c.name + "</h1>" +
       (c.flow || c.wall ? "</section>" : '<div class="detail-hero"><img alt="' + c.name + '" src="' + c.cover + '"></div></section>') +
-      (c.chapters ? sumHTML(c.head, c.ov, c.spec.concat([["Role", c.role]])) + (c.slug === "gogodive" ? tabsHTML(c) : (c.flow ? wallHTML(c.flow, c.flowTone || c.chapters[0].tone, c.phone || c.flow.map(function (x) { return { img: x, t: c.name, s: "" }; })) : (c.wall ? wallHTML(contOf(c).imgs, c.flowTone || c.chapters[0].tone, contOf(c).ph) : "")) + showcaseHTML(c)) :
+      (c.chapters ? sumHTML(c.head, c.ov, c.spec.concat([["Role", c.role]])) + (c.slug === "gogodive" ? wallHTML(c.flow, c.flowTone || c.chapters[0].tone, c.phone) + tabsHTML(c) : (c.flow ? wallHTML(c.flow, c.flowTone || c.chapters[0].tone, c.phone || c.flow.map(function (x) { return { img: x, t: c.name, s: "" }; })) : (c.wall ? wallHTML(contOf(c).imgs, c.flowTone || c.chapters[0].tone, contOf(c).ph) : "")) + showcaseHTML(c)) :
       '<section class="detail-info"><dl>' + meta.map(function (m) { return "<div><dt>" + m[0] + "</dt><dd>" + m[1] + "</dd></div>"; }).join("") + "</dl>" +
       '<div class="ov"><span>Overview</span><p>' + c.ov + "</p></div></section>" + (c.wall ? wallHTML(contOf(c).imgs, c.flowTone || c.pal[1], contOf(c).ph) : "")) +
       (c.chapters ? "" : '<section class="others cworks"><h2 class="display">Works</h2>' +
