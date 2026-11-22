@@ -291,6 +291,9 @@ a:focus-visible, button:focus-visible { outline: 2px solid currentColor; outline
 .dp__col { overflow: hidden; aspect-ratio: var(--car); background: #e9e5de; box-shadow: 0 24px 44px -30px rgba(0,0,0,.35); }
 .dp__col img { width: 100%; display: block; transform: translateY(calc(var(--k) * -33.3333%)); }
 .dp__col:nth-child(2) { margin-top: 48px; } .dp__col:nth-child(3) { margin-top: 96px; }
+.dp[data-dp] .dp__cols { position: sticky; top: 92px; align-self: start; height: calc(100vh - 130px); }
+.dp[data-dp] .dp__col { aspect-ratio: auto; height: calc(100% - 96px); }
+.dp[data-dp] .dp__col img { transform: none; will-change: transform; }
 .visit { display: inline-flex; gap: 10px; }
 .visit b { font-weight: 500; }
 .contact .visit { display: flex; justify-content: center; margin-top: 28px; font-size: 13px; color: var(--mute); text-transform: uppercase; letter-spacing: .04em; }
@@ -1204,6 +1207,10 @@ html { overflow-x: clip; }
         var p = Math.min(1, Math.max(0, (vh * 0.6 - r.top) / Math.max(1, r.height - vh * 0.4)));
         var max = Math.max(0, im.offsetHeight - scr.clientHeight);
         im.style.transform = "translate3d(0," + (-p * max).toFixed(1) + "px,0)";
+        [].slice.call(d.querySelectorAll(".dp__col")).forEach(function (col, k) {
+          var ci = col.firstElementChild, seg = ci.offsetHeight / 3, room = Math.max(0, seg - col.clientHeight);
+          ci.style.transform = "translate3d(0," + (-(k * seg) - p * room).toFixed(1) + "px,0)";
+        });
       });
     };
     window.__scUpdate();
