@@ -1225,14 +1225,17 @@ html { overflow-x: clip; }
     var tx = -100, ty = -100, x = -100, y = -100, run = 0;
     function loop() { x += (tx - x) * 0.28; y += (ty - y) * 0.28; dot.style.transform = "translate(" + x.toFixed(1) + "px," + y.toFixed(1) + "px)"; run = Math.abs(tx - x) + Math.abs(ty - y) > 0.3 ? requestAnimationFrame(loop) : 0; }
     document.addEventListener("pointermove", function (e) {
-      if (e.pointerType !== "mouse") return;
-      tx = e.clientX; ty = e.clientY; if (x < -50) { x = tx; y = ty; }
+      if (e.pointerType !== "mouse" || (e.clientX === 0 && e.clientY === 0)) return;
+      tx = e.clientX; ty = e.clientY;
+      if (x < -50 || Math.abs(tx - x) + Math.abs(ty - y) > 160) { x = tx; y = ty; }
       dot.classList.add("on");
       dot.classList.toggle("big", !!(e.target.closest && e.target.closest("a, button, .trail")));
       if (!run) run = requestAnimationFrame(loop);
     }, { passive: true });
     document.documentElement.addEventListener("mouseleave", function () { dot.classList.remove("on"); });
     window.addEventListener("blur", function () { dot.classList.remove("on"); });
+    window.addEventListener("hashchange", function () { x = tx; y = ty; dot.style.transform = "translate(" + x + "px," + y + "px)"; dot.classList.remove("big"); });
+    document.addEventListener("pointerdown", function (e) { if (e.pointerType === "mouse") { tx = x = e.clientX; ty = y = e.clientY; dot.style.transform = "translate(" + x + "px," + y + "px)"; } }, true);
   })();
 
   /* ---------- 라우팅 ---------- */
