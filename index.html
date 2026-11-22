@@ -820,7 +820,7 @@ html { overflow-x: clip; }
           rows: [["Role", "기획 · 디자인"], ["Tool", "Photoshop · Illustrator"]], long: null }
       ], recipe: 0, pal: ["#F2A7A0", "#FFF4EA", "#6C8EBF", "#2B2B2B"], word: "Millimom",
       ov: "2026년 1월부터 함께하고 있는 고객사입니다. 브랜드 콘텐츠 디자인을 맡아 진행하고 있습니다. ※ 가안 문구입니다. 실제 작업 내용으로 바꿔 주세요." },
-    { slug: "gogodive", name: "Gogo Dive", period: "4 Brands — Ongoing", status: "Ongoing", role: "Brand Content Design", brands: ["Laserin", "Secrets", "Deepvibe", "Gogodive"],
+    { slug: "gogodive", tabs: true, name: "Gogo Dive", period: "4 Brands — Ongoing", status: "Ongoing", role: "Brand Content Design", brands: ["Laserin", "Secrets", "Deepvibe", "Gogodive"],
       works: [], recipe: 3, pal: ["#1F6F8B", "#E8F4F8", "#F2C14E", "#1B1B1B"], word: "Gogo Dive",
       flowTone: "#F7C9AE", phone: [
         { img: LBF.ig[0], t: "26 블랙프라이데이", s: "Laserin · 할인 레인 입장" }, { img: SW.ig[0], t: "Swim Week", s: "Laserin · 가을 할인 프로모션" }, { img: BF.ig[0], t: "26 블랙프라이데이", s: "Secrets · PINK ON" }, { img: SR[0], t: "서포터즈 모집 공고", s: "Laserin · 서포터즈 1기 모집" },
@@ -1175,7 +1175,8 @@ html { overflow-x: clip; }
       if (scroll) window.scrollTo({ top: tb.getBoundingClientRect().top + window.scrollY, behavior: "smooth" });
     }
     btns.forEach(function (b) { b.onclick = function () { show(b.dataset.k, true); }; });
-    show(btns[0].dataset.k, false);
+    var want = window.__wantTab; window.__wantTab = null;
+    show(want && btns.some(function (b) { return b.dataset.k === want; }) ? want : btns[0].dataset.k, false);
   }
   function campListHTML(c) {
     var ks = K.filter(function (k) { return k.client === c.slug; });
@@ -1459,6 +1460,9 @@ html { overflow-x: clip; }
     if (!/^k-/.test(h)) { var _bi = document.querySelector(".bi"); if (_bi) _bi.remove(); clearTimeout(biTimer); }
     var mk = /^k-(.+)$/.exec(h);
     var kr = mk && K.filter(function (x) { return x.slug === mk[1]; })[0];
+    var kc = kr && C.filter(function (x) { return x.slug === kr.client && x.tabs; })[0];
+    if (kc) { window.__wantTab = kr.slug; renderClient(kc); home.hidden = true; detail.hidden = false; window.scrollTo(0, 0); fit(); setMenu(false);
+      setTimeout(function () { var tb = document.querySelector("#viewDetail .tb"); if (tb) window.scrollTo({ top: tb.getBoundingClientRect().top + window.scrollY, behavior: "smooth" }); }, 350); return; }
     if (kr) { renderCampaign(kr); home.hidden = true; detail.hidden = false; window.scrollTo(0, 0); fit(); setMenu(false); return; }
     var mc = /^c-(.+)$/.exec(h);
     var cr = mc && C.filter(function (x) { return x.slug === mc[1]; })[0];
