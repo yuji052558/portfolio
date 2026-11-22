@@ -1048,6 +1048,7 @@ html { overflow-x: clip; }
   function showcaseHTML(c) {
     var all = [];
     c.chapters.forEach(function (ch) { (ch.items || []).forEach(function (m) { all.push({ m: m, ch: ch }); }); });
+    all = all.filter(function (o) { return !o.m.ph; }).concat(all.filter(function (o) { return o.m.ph; })).slice(0, 5);
     var film = '<section class="film" id="film"><div class="film__pin"><div class="film__head"><span>Selected contents</span><b>' + c.name + '</b><span class="film__n">01 / ' + String(all.length).padStart(2, "0") + '</span></div><div class="film__track">' +
       all.map(function (o) {
         return o.m.ph ? '<figure class="film__i ph" style="--ar:' + o.m.w + " / " + o.m.h + ";--tone:" + (o.ch.tone || "#e9e5de") + '">' + o.ch.name + "<br>Image " + o.m.w + " : " + o.m.h + "</figure>"
