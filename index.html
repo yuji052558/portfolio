@@ -787,7 +787,7 @@ html { overflow-x: clip; }
     }).join("") + '<div class="mini__phone"><div class="mini__scr"><div class="hd"><b>' + o.ph[0].t + "</b><small>" + (o.ph[0].s || "") + '</small></div><img alt="" src="' + o.ph[0].img + '"></div></div></div>';
   }
   function clientCard(c) {
-    return '<a class="card" href="' + (c.project ? "#p-" + c.project : "#c-" + c.slug) + '" data-c="' + c.k + '"><div class="card__media">' + miniHTML(c) + "</div>" +
+    return '<a class="card" href="' + (c.project ? "#p-" + c.project : "#c-" + c.slug) + '" data-c="' + c.k + '"><div class="card__media"><img class="card__img" src="' + c.img + '" alt="' + c.name + '"></div>' +
       '<div class="card__info"><span class="t">' + c.name + '</span><span class="tags"><span>' + c.period + '</span></span></div>' +
       '<p class="card__ov">' + c.ov.split("※")[0].trim() + "</p></a>";
   }
