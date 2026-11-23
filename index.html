@@ -495,6 +495,24 @@ html { overflow-x: clip; }
 .igp.sq .igp__media { aspect-ratio: 1; }
 .igp__track video, .igp__thumbs video { flex: none; width: 100%; height: 100%; object-fit: cover; display: block; }
 .pop.cyc { display: grid; } .pop.cyc img { grid-area: 1 / 1; opacity: 0; transition: opacity .7s ease; } .pop.cyc img.on { opacity: 1; }
+.ad { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 28px; align-items: center; margin: 48px 0 0 24px; }
+.ad__phone { width: clamp(260px, 25vw, 360px); aspect-ratio: 9 / 19.2; border-radius: 48px; background: #111; padding: 10px; box-shadow: 0 40px 70px -36px rgba(0,0,0,.45); }
+.ad__scr { height: 100%; border-radius: 39px; overflow: hidden; background: #fff; display: flex; flex-direction: column; font-family: -apple-system, "Apple SD Gothic Neo", Pretendard, sans-serif; letter-spacing: 0; color: #111; }
+.ad__st { display: flex; justify-content: space-between; align-items: center; padding: 14px 26px 6px; font-size: 13px; } .ad__st i { width: 30%; height: 22px; border-radius: 12px; background: #111; margin-right: 30%; }
+.ad__hd { display: flex; align-items: center; gap: 9px; padding: 8px 12px; } .ad__hd .igp__av { width: 28px; height: 28px; font-size: 12px; } .ad__hd b { display: block; font-size: 12.5px; } .ad__hd small { font-size: 11px; color: #555; } .ad__hd em { margin-left: auto; font-style: normal; font-weight: 700; }
+.ad__media { position: relative; aspect-ratio: 4 / 5; flex: none; background: #eef3ea; }
+.ad__sl { position: absolute; inset: 0; opacity: 0; transition: opacity .7s ease; } .ad__sl.on { opacity: 1; }
+.ad__sl img, .ad__sl video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.ad__cta { display: flex; justify-content: space-between; padding: 11px 14px; background: #3d7a3a; color: #fff; font-size: 13px; }
+.ad__dots { display: flex; justify-content: center; gap: 4px; padding: 9px 0 4px; } .ad__dots i { width: 6px; height: 6px; border-radius: 50%; background: #d4d4d4; } .ad__dots i.on { background: #3897f0; }
+.ad__ic { display: flex; gap: 14px; padding: 2px 14px; font-size: 20px; } .ad__ic .r { margin-left: auto; }
+.ad__cap { margin: 6px 14px 0; font-size: 12.5px; line-height: 1.45; } 
+.ad__rail { overflow: hidden; padding: 30px 0; }
+.ad__track { display: flex; gap: 20px; width: max-content; will-change: transform; }
+.ad__track figure { margin: 0; width: clamp(220px, 22vw, 320px); aspect-ratio: 4 / 5; border-radius: 16px; overflow: hidden; box-shadow: 0 28px 50px -30px rgba(0,0,0,.4); transition: transform .4s var(--ease); }
+.ad__track figure:hover { transform: translateY(-8px); }
+.ad__track img, .ad__track video { width: 100%; height: 100%; object-fit: cover; display: block; }
+@media (max-width: 800px) { .ad { grid-template-columns: 1fr; margin-right: 24px; } .ad__phone { margin: 0 auto; } }
 .fd__bar { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; max-width: 920px; margin: 0 auto 24px; }
 .fd__bar button { display: inline-flex; gap: 8px; padding: 8px 14px; border-radius: 20px; border: 1px solid rgba(15,15,15,.16); font-size: 13px; color: var(--mute); transition: all .3s; }
 .fd__bar button b { font-weight: 600; color: #0F0F0F; } .fd__bar button.on { background: #0F0F0F; color: rgba(255,255,255,.7); border-color: #0F0F0F; } .fd__bar button.on b { color: #fff; }
@@ -773,6 +791,14 @@ html { overflow-x: clip; }
     pack: [{ img: "images/wl-box.jpg", cap: "Package Box", d: "T8 체중계 패키지 박스" }, { img: "images/wl-manual.jpg", cap: "User Manual", d: "TX 사용설명서 (표지 · 내지)" }, { img: "images/wl-habit.jpg", cap: "Habit Tracker", d: "월리 해빗 트래커 (증정품)" }, { img: "images/wl-card.jpg", cap: "Checkpoint Card", d: "사용 전 필수 체크포인트 카드" }] };
   var MBF = (function () { var d = function (n) { return "data:image/jpeg;base64,__MBF_" + n + "__"; };
     return { pc: "images/mbf-pc.jpg", mo: "images/mbf-mo.jpg", pop: ["images/mbf-pop1.jpg", "images/mbf-pop2.jpg", "images/mbf-pop3.jpg"], v1: "images/mbf-v1.mp4", v1p: "images/mbf-v1p.jpg", v6: "images/mbf-v6.mp4", i: ["images/mbf-0.jpg", "images/mbf-1.jpg", "images/mbf-2.jpg", "images/mbf-3.jpg", "images/mbf-4.jpg", "images/mbf-5.jpg", "images/mbf-6.jpg", "images/mbf-7.jpg", "images/mbf-8.jpg", "images/mbf-9.jpg"] }; })();
+  var ADS = [
+    { v: "images/ad-v1.mp4", p: "images/ad-p1.jpg", c: "보습은 FULL! 육아비는 SAVE!" },
+    { i: "images/ad-i1.jpg", c: "긁긁 거칠 CUT 보들말랑 KEEP" },
+    { i: "images/ad-i2.jpg", c: "지금 사면 1개 무료" },
+    { v: "images/ad-v2.mp4", p: "images/ad-p2.jpg", c: "고보습 미리 챙기고 엄마 보습 비상근무 OFF" },
+    { i: "images/ad-i3.jpg", c: "오늘이 마지막" },
+    { i: "images/ad-i4.jpg", c: "태열 고민 피부에도 무겁지 않은 산뜻진정" }
+  ];
   var SR = ["images/sr-ig1.jpg", "images/sr-ig2.jpg", "images/sr-ig3.jpg", "images/sr-ig4.jpg", "images/sr-ig5.jpg"];
   /* 캠페인(클라이언트 안의 개별 작업) — 배너·팝업·이벤트페이지·인스타 순서로 보여줌 */
   var K = [
@@ -815,11 +841,10 @@ html { overflow-x: clip; }
         { label: "Black Tag Event", insta: [MBF.v6, MBF.i[9]], post: { account: "millimom_kr", date: "11월 8일", likes: 39, caption: "[종료] 수딩세럼 100ml 출시! 이 소식, 혼자만 알기 있긔 없긔?😘💚\n\n밀동님들의 사랑을 받아온 밀리맘 수딩세럼 200ml!\n이제 가방에 쏙 넣어 다닐 수 있는\n100ml 튜브형으로도 만나보실 수 있어요! 🥰\n\n외출할 때도, 여행 갈 때도!\n우리 아기 피부에 진정이 필요한 순간마다\n간편하게 꺼내 쓸 수 있도록 준비했답니다💚\n그런데 이 반가운 소식, 그냥 알려드리기엔 아쉽잖아요?ㅎㅎ\n\n🔥 11월 9일(월) 오전 10시, 네이버 쇼핑라이브 첫 공개!\n\n✔ NEW 새싹 수딩세럼 100ml\n✔ 정상가 23,000원 → 라이브 특가 10,000원\n✔ 알림받기 쿠폰 1,000원 추가 할인\n✔ 최종 혜택가 9,000원 (61% OFF)\n✔ 새싹 로션 30ml 추가 증정!\n\n⏰ 오직 라이브 1시간 한정 스페셜 혜택!\n\n이 특별한 소식을 친구에게도 널리 알려주세요!\n\n🖤 BLACK TAG 친구 태그 이벤트\n\n🎁 이벤트 경품\n새싹 아토크림 100ml (28,000원 상당)\n추첨을 통해 총 5분께 증정!\n\n📅 이벤트 기간\n11월 8일(일) ~ 11월 10일(화)", tags: "#댓글이벤트 #소문내기이벤트 #블프 #블랙프라이데이 #밀리맘" } }
       ],
       igPost: { account: "millimom_kr", date: "11월 9일", caption: "LOVE IN EVERY MOMENT 🖤\nBLACK (MiLLi) DAY\n\n※ 캡션 가안입니다. 실제 게시글 문구로 바꿔 주세요.", tags: "#밀리맘 #블랙밀리데이 #블랙프라이데이" } },
-    { slug: "millimom-ad-creative", client: "millimom", brand: "Millimom", name: "Ad Creative", period: "2026", tone: "#E8F4E0", dot: "#3CB43C",
+    { slug: "millimom-ad-creative", client: "millimom", brand: "Millimom", name: "Ad Creative", period: "2026", tone: "#E8F4E0", dot: "#5E8C4E",
       head: "밀리맘 광고소재",
-      ov: "밀리맘의 시즌 프로모션 광고소재입니다. ※ 가안 문구입니다. 실제 작업 내용으로 바꿔 주세요.",
-      thumb: "images/mm-hero.gif", insta: ["images/mm-ad1.gif"],
-      igPost: { account: "millimom_kr", date: "", caption: "※ 광고소재 설명 가안입니다.", tags: "#밀리맘" } },
+      ov: "밀리맘 공식몰과 네이버 쇼핑라이브로 연결되는 SNS 광고소재입니다. 제품과 프로모션의 톤앤매너에 맞춰 디자인했고, 일부 소재는 모션(GIF)으로 제작해 피드에서 시선이 먼저 머물도록 했습니다.",
+      thumb: "images/ad-p1.jpg", ads: ADS },
     { slug: "secrets-black-friday", client: "gogodive", brand: "Secrets", name: "26 블랙프라이데이 프로모션", period: "2026.11.16 — 12.04", tone: "#F7E1EC", flowTone: "#EBB5CF", dot: "#F04FA8",
       head: "시크릿스 블랙프라이데이 ‘PINK ON’",
       ov: "시크릿스의 블랙프라이데이 프로모션 ‘PINK ON’ 디자인 작업을 진행했습니다. 웹·모바일 배너, 팝업 2종, 이벤트 페이지 2종, 인스타그램 콘텐츠까지 블랙과 핑크 톤으로 이어지게 작업했습니다.",
@@ -845,8 +870,8 @@ html { overflow-x: clip; }
     { slug: "ksox", wall: true, name: "K'sox", period: "2024.05 — Present", status: "Ongoing", role: "Brand Content Design",
       works: [], recipe: 4, pal: ["#2F6B4F", "#F1EBDC", "#E9B44C", "#1B1B1B"], word: "K'sox",
       ov: "2024년 5월부터 함께하고 있는 고객사입니다. 브랜드 콘텐츠 디자인을 꾸준히 이어가고 있습니다. ※ 가안 문구입니다. 실제 작업 내용으로 바꿔 주세요." },
-    { slug: "millimom", tabs: true, flow: [MBF.i[1], MBF.v1p, MBF.i[2], MBF.i[5], MM_HERO, MBF.i[8], MBF.i[4], MBF.i[9]], flowTone: "#B8D3A8",
-      phone: [{ img: MBF.i[1], t: "Black (MiLLi) Day", s: "Millimom · 블랙프라이데이" }, { img: MBF.i[2], t: "Black Box", s: "Millimom · 티저" }, { img: MBF.i[5], t: "Black Box Event", s: "Millimom · 이벤트" }, { img: MBF.i[9], t: "Black Tag", s: "Millimom · 신제품 공개" }, { img: MM_HERO, t: "Ad Creative", s: "Millimom · 광고소재" }],
+    { slug: "millimom", tabs: true, flow: [MBF.i[1], ADS[1].i, MBF.i[2], ADS[2].i, MBF.i[5], ADS[0].p, MBF.i[8], ADS[4].i, MBF.i[9], ADS[5].i], flowTone: "#B8D3A8",
+      phone: [{ img: MBF.i[1], t: "Black (MiLLi) Day", s: "Millimom · 블랙프라이데이" }, { img: MBF.i[2], t: "Black Box", s: "Millimom · 티저" }, { img: MBF.i[5], t: "Black Box Event", s: "Millimom · 이벤트" }, { img: MBF.i[9], t: "Black Tag", s: "Millimom · 신제품 공개" }, { img: ADS[1].i, t: "Ad Creative", s: "Millimom · 아토크림" }, { img: ADS[4].i, t: "Ad Creative", s: "Millimom · 환절기 보습" }],
       name: "Millimom", period: "2026.01 — Present", status: "Ongoing", role: "Brand Content Design",
       works: [],
       spec: [["Client", "Millimom"], ["Field", "Contents Design"], ["Deliverables", "SNS Contents · Ad Creative · Detail Page"], ["Tools", "Photoshop · Illustrator"], ["Year", "2026 — Now"]],
@@ -1081,6 +1106,29 @@ html { overflow-x: clip; }
   }
   function P0(k) { return Array.isArray(k.popup) ? k.popup[0] : k.popup; }
   function P1(k) { return Array.isArray(k.popup) ? k.popup[k.popup.length - 1] : k.popup; }
+  function adMedia(a, cls) { return a.v ? '<video class="' + (cls || "") + '" src="' + a.v + '" poster="' + a.p + '" muted loop playsinline autoplay preload="metadata"></video>' : '<img class="' + (cls || "") + '" alt="' + a.c + '" src="' + a.i + '">'; }
+  function adsHTML(k) {
+    var a = k.ads, rest = a.slice(1), row = rest.concat(rest);
+    return '<section class="ad"><div class="ad__phone"><div class="ad__scr"><div class="ad__st"><b>9:41</b><i></i></div>' +
+      '<div class="ad__hd"><span class="igp__av">M</span><div><b>millimom_kr</b><small>광고</small></div><em>···</em></div>' +
+      '<div class="ad__media">' + a.map(function (x, i) { return '<div class="ad__sl' + (i ? "" : " on") + '">' + adMedia(x) + "</div>"; }).join("") + "</div>" +
+      '<div class="ad__cta"><span>지금 구매하기</span><span>›</span></div><div class="ad__dots">' + a.map(function (x, i) { return "<i" + (i ? "" : ' class="on"') + "></i>"; }).join("") + "</div>" +
+      '<div class="ad__ic"><span>♡</span><span>◯</span><span>➢</span><span class="r">⊓</span></div><p class="ad__cap"><b>millimom_kr</b> <span>' + a[0].c + "</span></p></div></div>" +
+      '<div class="ad__rail"><div class="ad__track">' + row.map(function (x) { return '<figure>' + adMedia(x) + "</figure>"; }).join("") + "</div></div></section>";
+  }
+  function initAds(root) {
+    var ad = root.querySelector(".ad"); if (!ad) return;
+    var sl = [].slice.call(ad.querySelectorAll(".ad__sl")), dots = [].slice.call(ad.querySelectorAll(".ad__dots i")), cap = ad.querySelector(".ad__cap span"), i = 0;
+    clearInterval(window.__adT);
+    window.__adT = setInterval(function () { if (!document.body.contains(ad)) return clearInterval(window.__adT);
+      sl[i].classList.remove("on"); dots[i].classList.remove("on"); i = (i + 1) % sl.length; sl[i].classList.add("on"); dots[i].classList.add("on"); cap.textContent = k_ads_cap[i]; }, 3200);
+    var k_ads_cap = [].slice.call(ad.querySelectorAll(".ad__sl img, .ad__sl video")).map(function (m) { return m.getAttribute("alt") || ""; });
+    var caps = ADS.map(function (x) { return x.c; }); k_ads_cap = caps;
+    var tr = ad.querySelector(".ad__track"), x = 0, w = 0, last = performance.now(), hover = false;
+    tr.addEventListener("mouseenter", function () { hover = true; }); tr.addEventListener("mouseleave", function () { hover = false; });
+    (function tick(t) { if (!document.body.contains(tr)) return; var dt = Math.min(48, t - last); last = t; w = tr.scrollWidth / 2;
+      if (!hover && !reduce && w) { x -= dt * 0.035; if (x <= -w) x += w; tr.style.transform = "translate3d(" + x.toFixed(1) + "px,0,0)"; } requestAnimationFrame(tick); })(last);
+  }
   function isVid(src) { return /^data:video|\.mp4$/.test(src); }
   function mediaHTML(src, alt) { return isVid(src) ? '<video src="' + src + '" muted loop playsinline autoplay preload="metadata"></video>' : '<img alt="' + (alt || "") + '" src="' + src + '">'; }
   function feedsHTML(k) {
@@ -1199,6 +1247,7 @@ html { overflow-x: clip; }
       (k.tiles ? '<div class="pk__tiles">' + k.tiles.map(function (src, i) { var cap = [null, k.pack[0], k.pack[1], k.pack[2], k.pack[3]][i];
         return '<figure class="rvt' + (i ? "" : " wide") + '" style="--d:' + (i % 2) * 0.08 + 's"><img loading="lazy" alt="' + (cap ? cap.cap : "Package") + '" src="' + src + '">' + (cap ? "<figcaption><b>" + cap.cap + "</b>" + cap.d + "</figcaption>" : "") + "</figure>"; }).join("") + "</div>" : '<div class="pk__grid">' + k.pack.map(function (x, i) { return '<figure class="rvt' + (i ? "" : " big") + '" style="--d:' + (i % 3) * 0.08 + 's"><img loading="lazy" alt="' + x.cap + '" src="' + x.img + '"><figcaption><b>' + x.cap + "</b>" + x.d + "</figcaption></figure>"; }).join("") + "</div>") + "</section>";
     if (k.subs) h += '<div class="tp__subs">' + k.subs.map(function (x) { return '<figure class="rvt"><img loading="lazy" alt="' + x.cap + '" src="' + x.img + '"><figcaption>' + x.cap + "</figcaption></figure>"; }).join("") + "</div>";
+    if (k.ads) h += adsHTML(k);
     if (k.feeds) h += '<section class="igs">' + feedsHTML(k) + "</section>";
     else if (k.insta) h += '<section class="igs">' + igHTML(k) + "</section>";
     return h;
@@ -1210,7 +1259,7 @@ html { overflow-x: clip; }
       var k = K.filter(function (x) { return x.slug === slug; })[0];
       btns.forEach(function (b) { b.classList.toggle("on", b.dataset.k === slug); });
       panel.innerHTML = panelHTML(k);
-      window.__scUpdate = null; initShowcase(); initKV(k); initDetailMotion(); initIG();
+      window.__scUpdate = null; initShowcase(); initKV(k); initDetailMotion(); initIG(); initAds(panel);
       clearInterval(window.__popCyc);
       var cyc = [].slice.call(panel.querySelectorAll(".pop.cyc img")), ci = 0;
       if (cyc.length) window.__popCyc = setInterval(function () { if (!document.body.contains(cyc[0])) return clearInterval(window.__popCyc); cyc[ci].classList.remove("on"); ci = (ci + 1) % cyc.length; cyc[ci].classList.add("on"); }, 2200);
@@ -1380,7 +1429,7 @@ html { overflow-x: clip; }
     var W = 0, H = 0, visible = true, sc = 1;
     var SIZES = [132, 138, 194, 174, 132, 147, 174, 160, 150];
     var RATIO = [1.25, 1.415, 1.25, 1.25, 1.25, 1.414, 1, 1.25, 1.25];
-    var HERO = { 4: { img: WL.thumb, href: "#k-atflee-wally-edition", name: "Atflee Wally Edition" }, 2: { img: MBF.i[1], href: "#k-millimom-black-milli-day", name: "Millimom Black (MiLLi) Day" }, 0: { img: H_LBF, href: "#k-laserin-black-friday", name: "라세린 26 블랙프라이데이" }, 1: { img: H_L7, href: "#p-l7-myeongdong-retro-poster", name: "L7 Myeongdong Retro Posters" }, 3: { img: MM_HERO, href: "#c-millimom", name: "Millimom" }, 5: { img: H_WN, href: "#p-blue-lion-wanini-musical", name: "Blue Lion Wanini Musical" }, 6: { img: H_LUCKY, href: "#c-atflee", name: "Atflee Lucky Festa" }, 7: { img: H_LASERIN, href: "#k-laserin-swim-week", name: "Laserin Swim Week" }, 8: { img: H_BF, href: "#k-secrets-black-friday", name: "26 블랙프라이데이 프로모션" } };
+    var HERO = { 4: { img: WL.thumb, href: "#k-atflee-wally-edition", name: "Atflee Wally Edition" }, 2: { img: MBF.i[1], href: "#k-millimom-black-milli-day", name: "Millimom Black (MiLLi) Day" }, 0: { img: H_LBF, href: "#k-laserin-black-friday", name: "라세린 26 블랙프라이데이" }, 1: { img: H_L7, href: "#p-l7-myeongdong-retro-poster", name: "L7 Myeongdong Retro Posters" }, 3: { img: MM_HERO, href: "#k-millimom-ad-creative", name: "Millimom Ad Creative" }, 5: { img: H_WN, href: "#p-blue-lion-wanini-musical", name: "Blue Lion Wanini Musical" }, 6: { img: H_LUCKY, href: "#c-atflee", name: "Atflee Lucky Festa" }, 7: { img: H_LASERIN, href: "#k-laserin-swim-week", name: "Laserin Swim Week" }, 8: { img: H_BF, href: "#k-secrets-black-friday", name: "26 블랙프라이데이 프로모션" } };
     var DEPTH = [0.2, 0.85, 0.5, 1.0, 0.35, 0.7, 0.0, 0.6, 0.45];
     var AX = [0.17, 0.13, 0.19, 0.12, 0.16, 0.1, 0.18, 0.14, 0.15];
     var AY = [0.2, 0.16, 0.22, 0.17, 0.23, 0.14, 0.2, 0.21, 0.18];
