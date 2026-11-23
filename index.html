@@ -50,7 +50,7 @@ button { font: inherit; letter-spacing: inherit; color: inherit; background: non
 a:focus-visible, button:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
 
 .grain {
-  position: fixed; inset: 0; z-index: 300; pointer-events: none; opacity: 0.035; mix-blend-mode: multiply;
+  position: fixed; inset: 0; z-index: 300; pointer-events: none; opacity: 0.035;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>");
 }
 .page {
@@ -496,7 +496,7 @@ html { overflow-x: clip; }
 .igp__track video, .igp__thumbs video { flex: none; width: 100%; height: 100%; object-fit: cover; display: block; }
 .pop.cyc { display: grid; } .pop.cyc img { grid-area: 1 / 1; opacity: 0; transition: opacity .7s ease; } .pop.cyc img.on { opacity: 1; }
 .ad { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 28px; align-items: center; margin: 48px 0 0 24px; }
-.ad__phone { width: clamp(260px, 25vw, 360px); aspect-ratio: 9 / 19.2; border-radius: 48px; background: #111; padding: 10px; box-shadow: 0 40px 70px -36px rgba(0,0,0,.45); }
+.ad__phone { position: relative; z-index: 2; width: clamp(260px, 25vw, 360px); aspect-ratio: 9 / 19.2; border-radius: 48px; background: #111; padding: 10px; box-shadow: 0 40px 70px -36px rgba(0,0,0,.45); }
 .ad__scr { height: 100%; border-radius: 39px; overflow: hidden; background: #fff; display: flex; flex-direction: column; font-family: -apple-system, "Apple SD Gothic Neo", Pretendard, sans-serif; letter-spacing: 0; color: #111; }
 .ad__st { display: flex; justify-content: space-between; align-items: center; padding: 14px 26px 6px; font-size: 13px; } .ad__st i { width: 30%; height: 22px; border-radius: 12px; background: #111; margin-right: 30%; }
 .ad__hd { display: flex; align-items: center; gap: 9px; padding: 8px 12px; } .ad__hd .igp__av { width: 28px; height: 28px; font-size: 12px; } .ad__hd b { display: block; font-size: 12.5px; } .ad__hd small { font-size: 11px; color: #555; } .ad__hd em { margin-left: auto; font-style: normal; font-weight: 700; }
@@ -507,7 +507,7 @@ html { overflow-x: clip; }
 .ad__dots { display: flex; justify-content: center; gap: 4px; padding: 9px 0 4px; } .ad__dots i { width: 6px; height: 6px; border-radius: 50%; background: #d4d4d4; } .ad__dots i.on { background: #3897f0; }
 .ad__ic { display: flex; gap: 14px; padding: 2px 14px; font-size: 20px; } .ad__ic .r { margin-left: auto; }
 .ad__cap { margin: 6px 14px 0; font-size: 12.5px; line-height: 1.45; } 
-.ad__rail { overflow: hidden; padding: 30px 0; }
+.ad__rail { overflow: hidden; padding: 40px 0 70px; margin-left: -28px; padding-left: 28px; -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 60px); mask-image: linear-gradient(90deg, transparent 0, #000 60px); }
 .ad__track { display: flex; gap: 20px; width: max-content; will-change: transform; }
 .ad__track figure { margin: 0; width: clamp(220px, 22vw, 320px); aspect-ratio: 4 / 5; border-radius: 16px; overflow: hidden; box-shadow: 0 28px 50px -30px rgba(0,0,0,.4); transition: transform .4s var(--ease); }
 .ad__track figure:hover { transform: translateY(-8px); }
